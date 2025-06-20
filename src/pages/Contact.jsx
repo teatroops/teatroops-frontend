@@ -15,7 +15,12 @@ const Contact = () => {
         <img className='w-full md:max-w-[480px]' src={assets.contact_img} alt="" />
         <div className='flex flex-col justify-center items-start gap-6'>
           <p className='font-semibold text-xl text-gray-600'>Our Store</p>
-          <p className=' text-gray-500'>B-12, Connaught Place <br /> 2nd Floor, New Delhi, India</p>
+          <p className='text-gray-500'>
+            C-54, Khasra no 17/3/3, Gali Number 7<br />
+            Near ICICI ATM, Gokalpuri<br />
+            North East Delhi, New Delhi - 110094<br />
+            Delhi, India
+          </p>
           <p className=' text-gray-500'>Tel: +91 9990033206 <br /> Email: teatroopsindia@gmail.com</p>
           <p className='font-semibold text-xl text-gray-600'>Our Tea Selection</p>
           <p className=' text-gray-500'>Discover our premium teas sourced from the finest gardens.</p>
