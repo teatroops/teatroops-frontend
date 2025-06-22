@@ -12,15 +12,15 @@ const About = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="my-6 p-4 flex flex-col md:flex-row gap-10 px-4 sm:px-6 lg:px-12 rounded-md bg-green-50">
+      <div className="my-6 p-4 flex flex-col md:flex-row gap-10 px-4 sm:px-6 lg:px-12">
         <img
           className="w-full md:max-w-[500px] rounded-lg shadow-lg object-cover"
           src={assets.about_img}
           alt="About Tea Troops"
         />
 
-        <div className="flex flex-col justify-center gap-6 text-base leading-8 ">
-          <span className="font-semibold text-2xl text-green-700">
+        <div className="flex flex-col justify-center gap-4 text-base leading-8 ">
+          <span className="font-semibold text-2xl text-[--primary-color]">
             Welcome to Tea Troops!
           </span>
           <p>
@@ -44,34 +44,31 @@ const About = () => {
             constantly evolving. It is also essential to ensure our teas are
             ethically sourced.
           </p>
+          {/* What is Tea Troops */}
+          <h3 className="text-xl font-bold text-[--primary-color]">
+            What does Tea Troops mean?
+          </h3>
+          <p className="text-gray-700 leading-relaxed">
+            It represents a troop that loves herbal tea. But more than that, it's
+            a symbol of people working together in the fields, harvesting
+            ingredients that seem simple but are deeply complex and healing. Tea
+            Troops is a movement of love for nature, for simplicity, and for the
+            community behind every blend.
+          </p>
+
+          {/* Our Teas Section */}
+          <h3 className="text-xl font-bold text-[--primary-color]">Our Teas</h3>
+          <p className="text-gray-700 leading-relaxed">
+            Yes! It is a permutation and combination with intense study, also
+            driven by our valuable clients who love herbal tea and happily share
+            their experiences. We are building our teas. We all love nature and
+            nature-based ingredients, and Tea Troops brings that to all of you
+            with the help of our Troops.
+          </p>
         </div>
       </div>
 
-      {/* What is Tea Troops */}
-      <div className="bg-green-50 py-10 px-4 sm:px-6 lg:px-12 rounded-lg shadow-inner mb-12">
-        <h3 className="text-xl font-bold mb-4 text-green-800">
-          What does Tea Troops mean?
-        </h3>
-        <p className="text-gray-700 leading-relaxed">
-          It represents a troop that loves herbal tea. But more than that, it's
-          a symbol of people working together in the fields, harvesting
-          ingredients that seem simple but are deeply complex and healing. Tea
-          Troops is a movement of love for nature, for simplicity, and for the
-          community behind every blend.
-        </p>
-      </div>
 
-      {/* Our Teas Section */}
-      <div className="bg-green-50 py-8 px-4 sm:px-6 lg:px-12 rounded-lg shadow-inner mb-12">
-        <h3 className="text-xl font-bold mb-4 text-green-800">Our Teas</h3>
-        <p className="text-gray-700 leading-relaxed">
-          Yes! It is a permutation and combination with intense study, also
-          driven by our valuable clients who love herbal tea and happily share
-          their experiences. We are building our teas. We all love nature and
-          nature-based ingredients, and Tea Troops brings that to all of you
-          with the help of our Troops.
-        </p>
-      </div>
 
       {/* Newsletter */}
       {/* <NewsletterBox /> */}

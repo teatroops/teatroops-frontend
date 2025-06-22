@@ -3,7 +3,7 @@ import { ShopContext } from '../context/ShopContext';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const ProductItem = ({ id, image, name, price, size }) => {
+const ProductItem = ({ id, image, name, price, size, benefits }) => {
   const { currency, addToCart } = useContext(ShopContext);
   const actualSize = typeof size === 'string' && size ? size : undefined;
 
@@ -16,13 +16,14 @@ const ProductItem = ({ id, image, name, price, size }) => {
         className="flex-1 flex flex-col p-4"
       >
         {/* Image */}
-        <div className="w-full h-56 bg-[#f3f3f3] rounded mb-4 shadow-md overflow-hidden">
+        <div className="w-full aspect-[4/5] min-h-[120px] sm:min-h-[180px] md:min-h-[200px] rounded mb-4 overflow-hidden bg-white flex items-center justify-center">
           <img
             src={image[0]}
             alt={name}
-            className="object-contain h-full transition-transform duration-500 group-hover:scale-105"
+            className="object-contain w-full h-full transition-transform duration-500 group-hover:scale-105"
           />
         </div>
+
 
         {/* Name & Price */}
         <div className="flex flex-col gap-1">
@@ -40,13 +41,20 @@ const ProductItem = ({ id, image, name, price, size }) => {
               </svg>
             ))}
           </div>
+          {Array.isArray(benefits) && benefits.length > 0 && (
+            <ul className="text-sm text-gray-500 font-semibold mb-1">
+              {benefits.slice(0, 2).map((benefit, idx) => (
+                <li key={idx} className="truncate">{benefit}</li>
+              ))}
+            </ul>
+          )}
           <div className="flex items-center gap-2">
             <span className="text-base text-[--primary-color] font-semibold">
               {currency}{price?.offer ?? price?.mrp ?? price}
             </span>
             {price?.offer && price?.offer !== price?.mrp && (
               <span className="text-sm text-gray-400 line-through">
-                {currency}{price?.mrp}
+                MRP {currency}{price?.mrp}
               </span>
             )}
           </div>

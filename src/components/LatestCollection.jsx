@@ -44,7 +44,7 @@ const LatestCollection = () => {
       window.removeEventListener('resize', checkScroll);
     };
   }, [latestProducts]);
-  
+
 
   useEffect(() => {
     setLatestProducts(products.slice(0, 10));
@@ -66,7 +66,7 @@ const LatestCollection = () => {
         <button
           onClick={scrollLeft}
           disabled={isAtStart}
-          className={`absolute hover:text-white  left-0 top-1/2 -translate-y-1/2 z-10 bg-green-300 border border-green-700 rounded-full shadow p-2 flex items-center justify-center transition-opacity duration-200 ${isAtStart ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[--primary-color]'}`}
+          className={`absolute hover:text-white  left-0 top-1/2 -translate-y-1/2 z-10 bg-green-300 border border-[--primary-color] rounded-full shadow p-2 flex items-center justify-center transition-opacity duration-200 ${isAtStart ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[--primary-color]'}`}
           aria-label="Scroll left"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
@@ -77,7 +77,7 @@ const LatestCollection = () => {
         <button
           onClick={scrollRight}
           disabled={isAtEnd}
-          className={`absolute hover:text-white right-0 top-1/2 -translate-y-1/2 z-10 bg-green-300 border border-green-700  rounded-full shadow p-2 flex items-center justify-center transition-opacity duration-200 ${isAtEnd ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[--primary-color]'}`}
+          className={`absolute hover:text-white right-0 top-1/2 -translate-y-1/2 z-10 bg-green-300 border border-[--primary-color]  rounded-full shadow p-2 flex items-center justify-center transition-opacity duration-200 ${isAtEnd ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[--primary-color]'}`}
           aria-label="Scroll right"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
@@ -93,6 +93,7 @@ const LatestCollection = () => {
                   image={item.image}
                   name={item.name}
                   price={item.price}
+                  benefits={item.benefits}
                 />
               </div>
             ))}

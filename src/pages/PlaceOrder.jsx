@@ -345,7 +345,7 @@ const PlaceOrder = () => {
                         <div className="text-xs text-gray-500">Qty: <b>{quantity}</b></div>
                         <div className="mt-1 flex items-center gap-2">
                           <span className="text-sm line-through text-gray-400">{priceObj.mrp && `₹${priceObj.mrp}`}</span>
-                          <span className="text-base font-semibold text-green-600">₹{priceToUse}</span>
+                          <span className="text-base font-semibold text-[--primary-color]">₹{priceToUse}</span>
                           {/* {priceObj.discountNote && <span className="ml-2 text-xs text-red-500">{priceObj.discountNote}</span>} */}
                         </div>
                       </div>
@@ -405,7 +405,7 @@ const PlaceOrder = () => {
                       <span>₹{subtotal.toFixed(2)}</span>
                     </div>
                     {discountTotal > 0 && (
-                      <div className="flex justify-between text-green-700 text-sm">
+                      <div className="flex justify-between text-[--primary-color] text-sm">
                         <span>Discount:</span>
                         <span>-₹{discountTotal.toFixed(2)}</span>
                       </div>

@@ -5,7 +5,7 @@ import { assets } from '../assets/assets'
 const Footer = () => {
   return (
     <div>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8  text-sm bg-green-50 p-8'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8  text-sm p-8'>
 
         {/* Logo/About */}
         <div className="flex flex-col">
@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
 
         {/* Company */}
-        <div className='flex flex-col sm:items-center'>
+        <div className='flex flex-col'>
           <p className='text-xl font-medium mb-5'>COMPANY</p>
           <ul className='flex flex-col gap-1 text-[--primary-color] font-medium'>
             <li><Link to="/">Home</Link></li>
@@ -27,7 +27,7 @@ const Footer = () => {
         </div>
 
         {/* Policies */}
-        <div className='flex flex-col sm:items-center'>
+        <div className='flex flex-col'>
           <p className='text-xl font-medium mb-5'>POLICIES</p>
           <ul className='flex flex-col gap-1 text-[--primary-color] font-medium'>
             <li><Link to="/privacy-policy">Privacy Policy</Link></li>
@@ -38,9 +38,9 @@ const Footer = () => {
         </div>
 
         {/* Get in Touch + Social + Copyright */}
-        <div className="flex flex-col items-start lg:items-end">
+        <div className="flex flex-col">
           <p className='text-xl font-medium mb-5'>GET IN TOUCH</p>
-          <ul className='flex flex-col gap-1 text-gray-600 mb-4'>
+          <ul className='flex flex-col gap-1 text-[--primary-color] mb-4'>
             <li><a href="tel:+919990033206">+91 9990033206</a></li>
             <li>teatroopsindia@gmail.com</li>
           </ul>
@@ -59,7 +59,7 @@ const Footer = () => {
 
       <div>
         <hr />
-        <p className='py-5 text-sm text-center text-[--primary-color]'>Copyright 2024@ Tea troops.com - All Right Reserved.</p>
+        <p className='py-5 text-sm text-center text-[--primary-color]'>Copyright 2025@ Tea Troops.com - All Right Reserved.</p>
       </div>
     </div>
   )

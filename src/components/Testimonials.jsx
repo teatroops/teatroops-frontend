@@ -3,43 +3,43 @@ import Title from './Title';
 
 const testimonialsData = [
     {
-        text: '"The best hibiscus tea I’ve ever had. Smooth, aromatic, and actually helps my sleep! 🌙"',
+        text: '"The best hibiscus tea I’ve ever had. Smooth, aromatic, and actually helps my sleep!"',
         name: '– Suman Kumar Rana',
     },
     {
-        text: '"No artificial flavors, just natural goodness. Exactly what I was looking for. 🍃"',
+        text: '"No artificial flavors, just natural goodness. Exactly what I was looking for. "',
         name: '– Suneja Mohit',
     },
     {
-        text: '"Soothing and flavorful. Replaced my regular tea with this every morning. ☕"',
+        text: '"Soothing and flavorful. Replaced my regular tea with this every morning."',
         name: '– Mugdha Sachdeva',
     },
     {
-        text: '"Best herbal teas! The aromas are subtle and natural – loved all the flavors. 🌼"',
+        text: '"Best herbal teas! The aromas are subtle and natural – loved all the flavors."',
         name: '– Mugdha Sachdeva',
     },
     {
-        text: '"Natural product 🌿 – calming and refreshing tea for anytime of day!"',
+        text: '"Natural product  calming and refreshing tea for anytime of day!"',
         name: '– Shilpi Rana',
     },
     {
-        text: '"Great in taste and fragrance – flower based teas that feel close to nature. 🌸"',
+        text: '"Great in taste and fragrance  flower based teas that feel close to nature."',
         name: '– Sunil Singh',
     },
     {
-        text: '"Best tea with health benefits! Hibiscus tea is amazing for BP and immunity. 💪"',
+        text: '"Best tea with health benefits! Hibiscus tea is amazing for BP and immunity. "',
         name: '– Asheeran Punjabi',
     },
     {
-        text: '"A peaceful sip from the peaks 🏔️ – Chamomile tea with a calming experience."',
+        text: '"A peaceful sip from the peaks  – Chamomile tea with a calming experience."',
         name: '– Juhi Gaur',
     },
     {
-        text: '"Nice! Organic teas with good aroma and value for money. 👍"',
+        text: '"Nice! Organic teas with good aroma and value for money."',
         name: '– Suneja Mohit',
     },
     {
-        text: '"The best! Helped me sleep better and tastes smooth. 🎁✨"',
+        text: '"The best! Helped me sleep better and tastes smooth."',
         name: '– Suman Kumar Rana',
     },
 ];
@@ -114,7 +114,7 @@ const Testimonials = () => {
                     <button
                         key={idx}
                         onClick={() => setCurrent(idx)}
-                        className={`w-3 h-3 rounded-full ${idx === current ? 'bg-green-600' : 'bg-white border border-green-600'}`}
+                        className={`w-3 h-3 rounded-full ${idx === current ? 'bg-[--primary-color]' : 'bg-white border border-[--primary-color]'}`}
                         aria-label={`Go to slide ${idx + 1}`}
                     />
                 ))}

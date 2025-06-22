@@ -1,6 +1,7 @@
 
 import logo from './img/LOGO_TeaTroops.svg'
 import hero_img from './img/web home page-New.webp'
+import hero_img_mobile from './img/web_home_page_Mobile.webp'
 import cart_icon from './cart_icon.png'
 import bin_icon from './bin_icon.png'
 import dropdown_icon from './dropdown_icon.png'
@@ -21,6 +22,7 @@ import cross_icon from './cross_icon.png'
 export const assets = {
     logo,
     hero_img,
+    hero_img_mobile,
     cart_icon,
     dropdown_icon,
     exchange_icon,

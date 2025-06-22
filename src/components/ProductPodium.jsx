@@ -43,9 +43,6 @@ const ProductPodium = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
                 {teas.map((tea, idx) => (
                     <Link
-                        // to={`/product/${tea.id}`}
-                        // to={"#"}
-                        // onClick={() => scrollTo(0, 0)}
                         key={idx}
                         className="bg-white text-start rounded-lg shadow flex flex-col items-center p-2"
                     >

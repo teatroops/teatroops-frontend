@@ -8,7 +8,7 @@ import TemperatureIcon from "../assets/img/Temperature.svg";
 import TimeIcon from "../assets/img/Time.svg";
 import InfusionsIcon from "../assets/img/Infusions.svg";
 import { toast } from 'react-toastify';
-import Benefits from "../components/Benefits";
+import Benefits, { ProductBenefits } from "../components/Benefits";
 import Title from "../components/Title";
 import ReviewSection from "../components/ReviewSection";
 
@@ -38,20 +38,40 @@ const Product = () => {
     <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100 px-4 sm:px-8">
       <div className="flex gap-12 flex-col sm:flex-row">
         {/* Images */}
-        <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
-          <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-start sm:w-[18.7%] w-full">
+        {/* Mobile layout (default) */}
+        <div className="flex-1 flex flex-col-reverse gap-3 sm:hidden">
+          <div className="flex overflow-x-auto justify-start w-full">
             {productData.image.flat().map((item, index) => (
               <img
                 onClick={() => setImage(item)}
                 src={item}
                 key={index}
-                className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer"
+                className="w-[25%] flex-shrink-0 cursor-pointer"
                 alt=""
               />
             ))}
           </div>
-          <div className="w-full sm:w-[80%] h-max shadow-lg">
+          <div className="w-full h-max shadow-lg">
             <img className="w-full h-auto" src={image} alt="" />
+          </div>
+        </div>
+        {/* Desktop/Tablet layout (sm and up) */}
+        <div className="hidden sm:flex flex-1 flex-col items-center gap-3">
+          {/* Main Image */}
+          <div className="w-full h-max shadow-lg">
+            <img className="w-full h-auto object-contain" src={image} alt="" />
+          </div>
+          {/* Thumbnails */}
+          <div className="flex flex-row overflow-x-auto justify-center w-full gap-2 mt-2">
+            {productData.image.flat().map((item, index) => (
+              <img
+                onClick={() => setImage(item)}
+                src={item}
+                key={index}
+                className={`w-[7.5rem] h-[7.5rem] object-contain rounded border cursor-pointer transition-all duration-200 ${image === item ? 'border-[--primary-color] border-2' : 'border-gray-200'}`}
+                alt=""
+              />
+            ))}
           </div>
         </div>
 
@@ -82,8 +102,8 @@ const Product = () => {
             {productData.price?.offer ?? productData.price?.mrp}
             {productData.price?.offer &&
               productData.price.offer !== productData.price.mrp && (
-                <span className="line-through text-gray-400 ml-3 text-xl">
-                  {currency}
+                <span span className="line-through text-gray-400 ml-3 text-xl">
+                  MRP {currency}
                   {productData.price.mrp}
                 </span>
               )}
@@ -91,10 +111,11 @@ const Product = () => {
           <span>(Incl of all taxes)</span>
 
           {productData.price?.discountNote && (
-            <p className="mt-2 text-green-600 text-sm font-semibold">
+            <p className="mt-2 text-[--primary-color] text-sm font-semibold">
               {productData.price.discountNote}
             </p>
           )}
+
 
           {/* Size Display */}
           <div className="flex items-center gap-6 my-6">
@@ -132,12 +153,16 @@ const Product = () => {
             ADD TO CART
           </button>
 
+          {/* Product Benefits (icons) */}
+          <ProductBenefits />
+
+
           {/* Description */}
           <p className="mt-5 text-gray-600 w-full">
             {productData.description}
           </p>
 
-          {/* Benefits */}
+          {/* Benefits of Tea*/}
           {productData.benefits?.length > 0 && (
             <div className="sm:w-1/2">
               <ul className="space-y-2 mt-4 text-gray-600 font-bold leading-4">
@@ -147,6 +172,7 @@ const Product = () => {
               </ul>
             </div>
           )}
+
 
           <div>
             {/* Storage Instructions */}
@@ -159,7 +185,7 @@ const Product = () => {
 
             {/* Caution */}
             {productData.caution && (
-              <div className="mt-4 text-sm text-red-500">
+              <div className="mt-4 text-sm text-gray-700">
                 <h3 className="font-semibold mb-1">Caution</h3>
                 <p>{productData.caution}</p>
               </div>
@@ -171,78 +197,82 @@ const Product = () => {
         </div>
       </div>
 
-
-      <Benefits showDescription={false} />
-
       {/* Recommended Infusion Guide */}
-      {productData.infusionGuide && Object.keys(productData.infusionGuide).length > 0 && (
-        <div className="my-10 px-4 text-center font-bold text-3xl">
-          <Title text1={'Recommended Infusion Guide'} />
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {productData.infusionGuide.quantity && (
-              <div className="flex flex-col items-center text-center">
-                <img src={QuantityIcon} alt="Quantity" className="w-40 h-40" />
-                <div className="infusionContent mt-[-2.5rem] w-48">
-                  <p className="text-base text-[--primary-color]">Quantity</p>
-                  <p className="text-sm text-gray-600">{productData.infusionGuide.quantity}</p>
+      {
+        productData.infusionGuide && Object.keys(productData.infusionGuide).length > 0 && (
+          <div className="my-10 px-4 text-center font-bold text-3xl">
+            <Title text1={'Recommended Infusion Guide'} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 sm:gap-6">
+              {productData.infusionGuide.quantity && (
+                <div className="flex flex-col items-center text-center">
+                  <img src={QuantityIcon} alt="Quantity" className="w-40 h-40" />
+                  <div className="infusionContent mt-[-2.5rem] w-48">
+                    <p className="text-base text-[--primary-color]">Quantity</p>
+                    <p className="text-sm text-gray-600">{productData.infusionGuide.quantity}</p>
+                  </div>
                 </div>
-              </div>
-            )}
-            {productData.infusionGuide.temperature && (
-              <div className="flex flex-col items-center text-center">
-                <img src={TemperatureIcon} alt="Temperature" className="w-40 h-40" />
-                <div className="infusionContent mt-[-2.5rem] w-40">
-                  <p className="text-base text-[--primary-color]">Temperature</p>
-                  <p className="text-sm text-gray-600 ">{productData.infusionGuide.temperature}</p>
+              )}
+              {productData.infusionGuide.temperature && (
+                <div className="flex flex-col items-center text-center">
+                  <img src={TemperatureIcon} alt="Temperature" className="w-40 h-40" />
+                  <div className="infusionContent mt-[-2.5rem] w-40">
+                    <p className="text-base text-[--primary-color]">Temperature</p>
+                    <p className="text-sm text-gray-600 ">{productData.infusionGuide.temperature}</p>
+                  </div>
                 </div>
-              </div>
-            )}
-            {productData.infusionGuide.time && (
-              <div className="flex flex-col items-center text-center">
-                <img src={TimeIcon} alt="Time" className="w-40 h-40" />
-                <div className="infusionContent mt-[-2.5rem] w-40">
-                  <p className="text-base text-[--primary-color]">Time</p>
-                  <p className="text-sm text-gray-600">{productData.infusionGuide.time}</p>
+              )}
+              {productData.infusionGuide.time && (
+                <div className="flex flex-col items-center text-center">
+                  <img src={TimeIcon} alt="Time" className="w-40 h-40" />
+                  <div className="infusionContent mt-[-2.5rem] w-40">
+                    <p className="text-base text-[--primary-color]">Time</p>
+                    <p className="text-sm text-gray-600">{productData.infusionGuide.time}</p>
+                  </div>
                 </div>
-              </div>
-            )}
-            {productData.infusionGuide.infusions && (
-              <div className="flex flex-col items-center text-center">
-                <img src={InfusionsIcon} alt="Infusions" className="w-40 h-40" />
-                <div className="infusionContent mt-[-2.5rem] w-48">
-                  <p className="text-base text-[--primary-color]">Infusions</p>
-                  <p className="text-sm text-gray-600 ">{productData.infusionGuide.infusions}</p>
+              )}
+              {productData.infusionGuide.infusions && (
+                <div className="flex flex-col items-center text-center">
+                  <img src={InfusionsIcon} alt="Infusions" className="w-40 h-40" />
+                  <div className="infusionContent mt-[-2.5rem] w-48">
+                    <p className="text-base text-[--primary-color]">Infusions</p>
+                    <p className="text-sm text-gray-600 ">{productData.infusionGuide.infusions}</p>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
 
       {/* highlight */}
-      {productData.highlightSection && (
-        <section className="my-12 relative max-w-6xl mx-auto px-4">
-          <div className="relative rounded-xl overflow-hidden">
-            {/* Image */}
-            <img
-              src={productData.highlightSection.image}
-              alt={productData.highlightSection.title}
-              className="w-full h-auto object-cover rounded-xl shadow"
-            />
+      {
+        productData.highlightSection && (
+          <section className="my-12 relative max-w-6xl mx-auto px-4">
+            <div className="relative overflow-hidden">
+              {/* Image */}
+              <img
+                src={productData.highlightSection.image}
+                alt={productData.highlightSection.title}
+                className="w-full h-auto object-contain"
+              />
 
-            {/* Overlay text box */}
-            <div className="absolute right-4 top-4 sm:right-6 sm:top-6 bg-white p-4 sm:p-6 max-w-[16rem] rounded-md shadow-lg text-left">
-              <h2 className="text-md sm:text-xl font-bold text-green-700 mb-2">
-                {productData.highlightSection.title}
-              </h2>
-              <p className="text-sm sm:text-sm text-gray-800 font-bold leading-relaxed">
-                {productData.highlightSection.text}
-              </p>
+              {/* Overlay text box */}
+              <div
+                className="
+                bg-white p-4 sm:p-6 sm:rounded-md sm:shadow-lg text-left max-w-full sm:max-w-[16rem]  mt-4 sm:mt-0 sm:absolute sm:right-6 sm:top-6">
+                <h2 className="text-md sm:text-xl font-bold text-[--primary-color] mb-2">
+                  {productData.highlightSection.title}
+                </h2>
+                <p className="text-sm text-gray-800 font-bold leading-relaxed">
+                  {productData.highlightSection.text}
+                </p>
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
+
 
 
 
@@ -256,7 +286,7 @@ const Product = () => {
           subCategory={productData.subCategory}
         />
       </div>
-    </div>
+    </div >
   ) : (
     <div className="opacity-0"></div>
   );

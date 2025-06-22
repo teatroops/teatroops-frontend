@@ -25,7 +25,7 @@ const Benefits = ({ showDescription = true }) => {
             title: '100% Natural',
             description: 'Only real herbs and flowers—nothing artificial, just the goodness of nature.',
             image: (
-                <img src={Natural} alt="Caffeine Free Icon" className="w-40 h-40" />
+                <img src={Natural} alt="Caffeine Free Icon" className="w-40 h-40 pb-4" />
             ),
         },
         {
@@ -47,7 +47,7 @@ const Benefits = ({ showDescription = true }) => {
                     At Tea Troops, every sip is crafted with care—free from caffeine, sugar, and synthetic ingredients.
                     Discover how pure, natural herbal blends can support your wellness journey.
                 </p> */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 mt-6 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 mt-6 sm:gap-8">
                     {benefitsData.map(({ title, description, image }, idx) => (
                         <div key={idx} className="flex flex-col items-center text-center">
                             <div className="mb-[-2rem]">{image}</div>
@@ -60,5 +60,45 @@ const Benefits = ({ showDescription = true }) => {
         </div>
     )
 }
+
+export const ProductBenefits = () => {
+    const benefitsData = [
+        {
+            title: 'Caffeine Free',
+            image: (
+                <img src={CaffeineFreeIcon} alt="Caffeine Free Icon" className="w-20 h-20" />
+            ),
+        },
+        {
+            title: 'Sugar Free',
+            image: (
+                <img src={SugarFree} alt="Sugar Free Icon" className="w-20 h-20" />
+            ),
+        },
+        {
+            title: '100% Natural',
+            image: (
+                <img src={Natural} alt="100% Natural Icon" className="w-20 h-20 pb-2" />
+            ),
+        },
+        {
+            title: 'No Artificial Colour',
+            image: (
+                <img src={NoArtificalColour} alt="No Artificial Colour Icon" className="w-20 h-20" />
+            ),
+        },
+    ];
+
+    return (
+        <div className="flex flex-row justify-start items-center gap-4 my-4">
+            {benefitsData.map(({ title, image }, idx) => (
+                <div key={idx} className="flex flex-col items-center text-center">
+                    <div className="">{image}</div>
+                    <h3 className="text-sm font-semibold text-[--primary-color] mt-[-0.7rem]">{title}</h3>
+                </div>
+            ))}
+        </div>
+    );
+};
 
 export default Benefits

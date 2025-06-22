@@ -84,7 +84,7 @@ const Collection = () => {
   }, [sortType]);
 
   return (
-    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
+    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t mb-6">
       {/* Filter Options */}
       <div className="min-w-60">
         <p
@@ -98,42 +98,7 @@ const Collection = () => {
             alt=""
           />
         </p>
-        {/* Category Filter */}
-        {/* <div
-          className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? "" : "hidden"
-            } sm:block`}
-        >
-          <p className="mb-3 text-sm font-medium">CATEGORIES</p>
-          <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"Herbal Tea"}
-                onChange={toggleCategory}
-              />{" "}
-              Herbal Tea
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"Green Tea"}
-                onChange={toggleCategory}
-              />{" "}
-              Green Tea
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"Black Tea"}
-                onChange={toggleCategory}
-              />{" "}
-              Black Tea
-            </p>
-          </div>
-        </div> */}
+
         {/* SubCategory Filter */}
         <div
           className={`border border-gray-300 pl-5 py-3 my-5 ${showFilter ? "" : "hidden"
@@ -159,41 +124,41 @@ const Collection = () => {
               />{" "}
               Tea Bags
             </p>
-            {/* <p className='flex gap-2'>
-                <input className='w-3' type="checkbox" value={'Sampler'} onChange={toggleSubCategory} /> Sampler
-              </p> */}
           </div>
         </div>
       </div>
 
       {/* Right Side */}
       <div className="flex-1">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 text-base sm:text-2xl mb-4 font-bold">
-          {/* Title stays full-width on mobile, inline on sm+ */}
-          <Title text1={"All Collection"} />
+        <div className="max-w-screen-xl mx-auto px-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 text-base sm:text-2xl mb-4 font-bold">
+            {/* Title stays full-width on mobile, inline on sm+ */}
+            <Title text1={"All Collection"} />
 
-          {/* Dropdown moves below title on mobile */}
-          <select
-            onChange={(e) => setSortType(e.target.value)}
-            className="border-2 border-gray-300 px-2 py-1 text-xs sm:text-sm sm:px-3 sm:py-2 rounded-md w-fit"
-          >
-            <option value="relevant">Sort by: Relevant</option>
-            <option value="low-high">Sort by: Price Low to High</option>
-            <option value="high-low">Sort by: Price High to Low</option>
-          </select>
-        </div>
+            {/* Dropdown moves below title on mobile */}
+            <select
+              onChange={(e) => setSortType(e.target.value)}
+              className="border-2 border-gray-300 px-2 py-1 text-xs sm:text-sm sm:px-3 sm:py-2 rounded-md w-fit"
+            >
+              <option value="relevant">Sort by: Relevant</option>
+              <option value="low-high">Sort by: Price Low to High</option>
+              <option value="high-low">Sort by: Price High to Low</option>
+            </select>
+          </div>
 
-        {/* Map Products */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6">
-          {filterProducts.map((item, index) => (
-            <ProductItem
-              key={index}
-              name={item.name}
-              id={item._id}
-              price={item.price}
-              image={item.image}
-            />
-          ))}
+          {/* Product Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6">
+            {filterProducts.map((item, index) => (
+              <ProductItem
+                key={index}
+                name={item.name}
+                id={item._id}
+                price={item.price}
+                image={item.image}
+                benefits={item.benefits}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

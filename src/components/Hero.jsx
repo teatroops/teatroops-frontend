@@ -4,11 +4,17 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
   return (
     <section className="relative w-full h-auto z-0">
-      {/* Background Image */}
+      {/* Background Image for Desktop/Tablet */}
       <img
         src={assets.hero_img}
         alt="Hero"
-        className="w-full object-cover md:h-[500px] lg:h-[600px] h-auto"
+        className="w-full object-cover h-auto hidden md:block md:h-[500px] lg:h-[600px]"
+      />
+      {/* Background Image for Mobile */}
+      <img
+        src={assets.hero_img_mobile}
+        alt="Hero Mobile"
+        className="w-full object-cover block md:hidden"
       />
 
       {/* Overlay text for tablet and desktop */}
@@ -28,13 +34,13 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Text below image for mobile only */}
-      <div className="block md:hidden px-4 py-6 text-center bg-white/90 rounded-md">
-        <h1 className="text-[--primary-color] font-bold text-3xl leading-snug">
-          Rooted in <br />
-          nature, crafted <br />
-          to nourish — let <br />
-          your body bloom
+      {/* Overlay text for mobile only (on image) */}
+      <div className="block md:hidden absolute inset-0  flex-col items-center justify-center px-4 py-6 text-center">
+        <h1 className="text-white font-bold text-2xl leading-tight  rounded-md px-2 py-1">
+          Rooted in nature, <br />
+          crafted to nourish — <br />
+          let your body bloom <br />
+
         </h1>
         <Link to="/collection">
           <button className="mt-6 px-6 py-2 bg-white text-[--primary-color] border border-[--primary-color] font-semibold rounded-full hover:bg-[--primary-color] hover:text-white transition duration-300">

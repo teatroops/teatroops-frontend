@@ -45,7 +45,7 @@ const HeroCarousel = () => {
                         key={idx}
                         src={img}
                         alt={`slide-${idx}`}
-                        className={`absolute w-full h-full transition-opacity duration-700 ${idx === current ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                        className={`absolute w-full h-full object-contain sm:object-fill   transition-opacity duration-700 ${idx === current ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
                     />
                 ))}
 
@@ -77,7 +77,7 @@ const HeroCarousel = () => {
                         <button
                             key={idx}
                             onClick={() => setCurrent(idx)}
-                            className={`w-3 h-3 rounded-full ${idx === current ? 'bg-green-600' : 'bg-white border border-green-600'}`}
+                            className={`w-3 h-3 rounded-full ${idx === current ? 'bg-[--primary-color]' : 'bg-white border border-[--primary-color]'}`}
                             aria-label={`Go to slide ${idx + 1}`}
                         />
                     ))}

@@ -21,6 +21,8 @@ const CartTotal = () => {
   // Calculate subtotal, discount, and final total
   let subtotal = 0;
   let discountTotal = 0;
+  let totalMrp = 0;
+  let totalOffer = 0;
   let appliedDiscountNotes = [];
   const appliedNotesSet = new Set();
 
@@ -31,7 +33,9 @@ const CartTotal = () => {
         const product = products.find((p) => p._id === productId);
         if (!product) continue;
         const priceObj = product.price || {};
-        const price = priceObj.offer ?? priceObj.mrp ?? 0;
+        const mrp = priceObj.mrp ?? 0;
+        const offer = priceObj.offer ?? mrp;
+        const price = offer;
         const note = priceObj.discountNote || product.discountNote;
         const discountInfo = parseDiscountNote(note);
 
@@ -51,6 +55,8 @@ const CartTotal = () => {
 
         subtotal += itemSubtotal;
         discountTotal += itemDiscount;
+        totalMrp += mrp * quantity;
+        totalOffer += offer * quantity;
       }
     }
   }
@@ -67,13 +73,23 @@ const CartTotal = () => {
 
       <div className='flex flex-col gap-2 mt-2 text-sm'>
         <div className='flex justify-between'>
+          <p>Total MRP</p>
+          <p>{currency} {totalMrp.toFixed(2)}</p>
+        </div>
+        {totalMrp > subtotal && (
+          <div className='flex justify-between text-green-600'>
+            <p>You Save on MRP</p>
+            <p>{currency} {(totalMrp - subtotal).toFixed(2)}</p>
+          </div>
+        )}
+        <div className='flex justify-between'>
           <p>Subtotal</p>
           <p>{currency} {subtotal.toFixed(2)}</p>
         </div>
         {discountTotal > 0 && (
-          <div className='flex justify-between text-green-700'>
+          <div className='flex justify-between text-[--primary-color]'>
             <p>Discount</p>
-            <div className="flex flex-col text-xs text-green-700">
+            <div className="flex flex-col text-xs text-[--primary-color]">
               {appliedDiscountNotes.length > 0 && (
                 <span>Applied :
                   {appliedDiscountNotes.join(', ')}

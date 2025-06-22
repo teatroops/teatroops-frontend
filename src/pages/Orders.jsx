@@ -56,7 +56,7 @@ const Orders = () => {
                   <p className='sm:text-base font-medium'>{item.name}</p>
                   <div className='flex items-center gap-3 mt-1 text-base text-gray-700'>
                     <span className="line-through text-gray-400">{item.price?.mrp && `${currency}${item.price.mrp}`}</span>
-                    <span className="text-green-600 font-semibold">{currency}{item.price?.offer ?? item.price?.mrp}</span>
+                    <span className="text-[--primary-color]font-semibold">{currency}{item.price?.offer ?? item.price?.mrp}</span>
                     {/* {item.price?.discountNote && <span className="text-xs text-red-500 ml-2">{item.price.discountNote}</span>} */}
                     <span className="ml-3">Qty: <b>{item.quantity}</b></span>
                     <span className="inline-block bg-green-50 border border-green-200 rounded px-3 py-1 ml-2 text-xs">Size: {item.size}</span>
@@ -67,7 +67,7 @@ const Orders = () => {
               </div>
               <div className='md:w-1/2 flex flex-col gap-2 items-end justify-between'>
                 <div className='flex items-center gap-2'>
-                  <span className={`min-w-2 h-2 rounded-full ${item.status === 'Delivered' ? 'bg-green-500' : 'bg-yellow-400'}`}></span>
+                  <span className={`min-w-2 h-2 rounded-full ${item.status === 'Delivered' ? 'bg-[--primary-color]' : 'bg-yellow-400'}`}></span>
                   <span className='text-sm md:text-base'>{item.status}</span>
                 </div>
                 <div className='text-right mt-2'>

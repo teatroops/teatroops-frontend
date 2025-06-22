@@ -21,17 +21,17 @@ const BestSeller = () => {
   const scrollLeft = () => {
     const el = sliderRef.current;
     if (!el) return;
-    el.scrollBy({ left: -250, behavior: 'smooth' });
+    el.scrollBy({ left: -270, behavior: 'smooth' });
   };
   const scrollRight = () => {
     const el = sliderRef.current;
     if (!el) return;
-    el.scrollBy({ left: 250, behavior: 'smooth' });
+    el.scrollBy({ left: 270, behavior: 'smooth' });
   };
 
   useEffect(() => {
     const bestProduct = products.filter((item) => (item.bestseller));
-    setBestSeller(bestProduct.slice(0, 5));
+    setBestSeller(bestProduct);
   }, [products]);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const BestSeller = () => {
         <button
           onClick={scrollLeft}
           disabled={isAtStart}
-          className={`absolute hover:text-white  left-0 top-1/2 -translate-y-1/2 z-10 bg-green-300 border border-green-700 rounded-full shadow p-2 flex items-center justify-center transition-opacity duration-200 ${isAtStart ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[--primary-color]'}`}
+          className={`absolute hover:text-white  left-0 top-1/2 -translate-y-1/2 z-10 bg-green-300 border border-[--primary-color] rounded-full shadow p-2 flex items-center justify-center transition-opacity duration-200 ${isAtStart ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[--primary-color]'}`}
           aria-label="Scroll left"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
@@ -72,7 +72,7 @@ const BestSeller = () => {
         <button
           onClick={scrollRight}
           disabled={isAtEnd}
-          className={`absolute hover:text-white right-0 top-1/2 -translate-y-1/2 z-10 bg-green-300 border border-green-700  rounded-full shadow p-2 flex items-center justify-center transition-opacity duration-200 ${isAtEnd ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[--primary-color]'}`}
+          className={`absolute hover:text-white right-0 top-1/2 -translate-y-1/2 z-10 bg-green-300 border border-[--primary-color]  rounded-full shadow p-2 flex items-center justify-center transition-opacity duration-200 ${isAtEnd ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[--primary-color]'}`}
           aria-label="Scroll right"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
@@ -82,12 +82,14 @@ const BestSeller = () => {
         <div ref={sliderRef} className="overflow-x-auto scroll-smooth px-4 py-4">
           <div className="flex gap-6 snap-x snap-mandatory">
             {bestSeller.map((item, index) => (
-              <div key={index} className="min-w-[220px] snap-start shrink-0">
+              <div key={index} className="w-[70vw] min-w-[180px] max-w-[250px] sm:min-w-[220px] sm:max-w-[250px] snap-start shrink-0">
                 <ProductItem
                   id={item._id}
                   name={item.name}
                   image={item.image}
                   price={item.price}
+                  imgHeightClass="h-40"
+                  benefits={item.benefits}
                 />
               </div>
             ))}

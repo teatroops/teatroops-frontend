@@ -71,6 +71,11 @@ const Cart = () => {
                           ? productData.price.offer ?? productData.price.mrp
                           : productData.price}
                       </p>
+                      {productData.price?.offer && productData.price?.offer !== productData.price?.mrp && (
+                        <span className="text-sm text-gray-400 line-through">
+                          MRP {currency}{productData.price?.mrp}
+                        </span>
+                      )}
                       <p className="px-2 py-1 text-xs sm:text-sm border-[1px] border-[--primary-color] bg-slate-50">
                         {item.size}
                       </p>

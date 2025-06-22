@@ -47,7 +47,7 @@ const ReviewSection = ({ productId }) => {
     }
   };
 
-  const [summary, setSummary] = useState({ average: 0, total: 0, stars: [0,0,0,0,0] });
+  const [summary, setSummary] = useState({ average: 0, total: 0, stars: [0, 0, 0, 0, 0] });
   const [form, setForm] = useState({ rating: 0, title: '', comment: '' });
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -74,7 +74,7 @@ const ReviewSection = ({ productId }) => {
       const res = await axios.get(`${API_BASE}/api/reviews/${productId}/summary`);
       setSummary(res.data);
     } catch (err) {
-      setSummary({ average: 0, total: 0, stars: [0,0,0,0,0] });
+      setSummary({ average: 0, total: 0, stars: [0, 0, 0, 0, 0] });
     }
   };
 
@@ -128,15 +128,15 @@ const ReviewSection = ({ productId }) => {
           <div className="text-sm text-gray-600 mt-1">Based on {summary.total} Reviews</div>
         </div>
         <div className="flex flex-col gap-1 w-56">
-          {[5,4,3,2,1].map((star, i) => (
+          {[5, 4, 3, 2, 1].map((star, i) => (
             <div key={star} className="flex items-center gap-2">
               <span className="w-4 text-sm">{star}</span>
               <Star filled={true} />
               <div className="bg-gray-200 rounded h-2 flex-1 mx-1">
-                <div style={{ width: `${summary.total ? (summary.stars[5-star]/summary.total)*100 : 0}%` }}
+                <div style={{ width: `${summary.total ? (summary.stars[5 - star] / summary.total) * 100 : 0}%` }}
                   className="bg-yellow-400 h-2 rounded"></div>
               </div>
-              <span className="w-6 text-xs">{Array.isArray(summary.stars) && summary.stars[5-star] !== undefined ? summary.stars[5-star] : 0}</span>
+              <span className="w-6 text-xs">{Array.isArray(summary.stars) && summary.stars[5 - star] !== undefined ? summary.stars[5 - star] : 0}</span>
             </div>
           ))}
         </div>
@@ -169,7 +169,7 @@ const ReviewSection = ({ productId }) => {
             required
           />
           {error && <div className="text-red-500 text-sm">{error}</div>}
-          <button disabled={loading} className="bg-[--primary-color] text-white px-6 py-2 rounded hover:bg-green-700 transition">
+          <button disabled={loading} className="bg-[--primary-color] text-white px-6 py-2 rounded hover:bg-[--primary-color] transition">
             {loading ? 'Submitting...' : 'Submit Review'}
           </button>
         </form>
@@ -189,7 +189,7 @@ const ReviewSection = ({ productId }) => {
               disabled={sliderScroll === 0}
               aria-label="Scroll left"
             >
-              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
             </button>
             {/* Slider */}
             <div
@@ -230,7 +230,7 @@ const ReviewSection = ({ productId }) => {
               disabled={sliderScroll >= maxSliderScroll}
               aria-label="Scroll right"
             >
-              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg>
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </button>
           </div>
         )}
