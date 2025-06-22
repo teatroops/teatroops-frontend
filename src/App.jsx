@@ -22,6 +22,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import ShippingPolicy from './pages/ShippingPolicy'
 import CancellationAndRefund from './pages/CancellationAndRefund'
 import TermsAndConditions from './pages/TermsAndConditions'
+import Blogs from './pages/Blogs'
+import BlogDetails from './pages/BlogDetails'
 
 const App = () => {
   return (
@@ -35,6 +37,8 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/collection' element={<Collection />} />
           <Route path='/about' element={<About />} />
+          <Route path='/blogs' element={< Blogs />} />
+          <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/product/:productId' element={<Product />} />
           <Route path='/product/:productId' element={<ProductPodium />} />
