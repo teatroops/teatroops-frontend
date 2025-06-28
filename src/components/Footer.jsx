@@ -60,7 +60,7 @@ const Footer = () => {
 
       <div>
         <hr />
-        <p className='py-5 text-sm text-center text-[--primary-color]'>Copyright 2025@ Tea Troops.com - All Right Reserved.</p>
+        <p className='py-5 text-sm text-center text-[--primary-color]'>Copyright © 2025 Tea Troops all rights reserved.</p>
       </div>
     </div>
   )

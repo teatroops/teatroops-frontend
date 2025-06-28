@@ -58,7 +58,7 @@ const Blogs = () => {
                 {blogData.map((blog, index) => (
                     <div
                         key={index}
-                        className="cursor-pointer bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition duration-300 group flex flex-col"
+                        className="cursor-pointer bg-white overflow-hidden shadow hover:shadow-lg transition duration-300 group flex flex-col"
                         onClick={() => navigate(`/blog/${blog.id}`)}
                     >
                         <div className="relative w-full aspect-[16/9] bg-gray-100">
@@ -67,9 +67,7 @@ const Blogs = () => {
                                 alt={blog.title}
                                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                             />
-                            <div className="absolute top-2 left-2 bg-white/80 text-xs text-gray-700 font-bold px-2 py-1 rounded">
-                                TEA TROOPS
-                            </div>
+
                         </div>
 
                         <div className="p-4 flex-1 flex flex-col justify-between">

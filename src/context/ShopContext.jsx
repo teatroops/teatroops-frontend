@@ -44,17 +44,19 @@ const ShopContextProvider = (props) => {
         }
         setCartItems(cartData);
 
-        if (token) {
-            try {
-
-                await axios.post(`${backendUrl}/api/cart/add`, { itemId, size, quantity }, { headers: { token } })
-
-            } catch (error) {
-                console.log(error)
-                toast.error(error.message)
-            }
+        // Save cart items to session storage if user is not logged in
+        if (!token) {
+            sessionStorage.setItem("cartItems", JSON.stringify(cartData));
         }
 
+        if (token) {
+            try {
+                await axios.post(`${backendUrl}/api/cart/add`, { itemId, size, quantity }, { headers: { token } });
+            } catch (error) {
+                console.log(error);
+                toast.error(error.message);
+            }
+        }
     }
 
     const getCartCount = () => {
@@ -74,24 +76,25 @@ const ShopContextProvider = (props) => {
     }
 
     const updateQuantity = async (itemId, size, quantity) => {
-
         let cartData = structuredClone(cartItems);
 
         cartData[itemId][size] = quantity;
 
-        setCartItems(cartData)
+        setCartItems(cartData);
+
+        // Save cart items to session storage if user is not logged in
+        if (!token) {
+            sessionStorage.setItem("cartItems", JSON.stringify(cartData));
+        }
 
         if (token) {
             try {
-
-                await axios.post(`${backendUrl}/api/cart/update`, { itemId, size, quantity }, { headers: { token } })
-
+                await axios.post(`${backendUrl}/api/cart/update`, { itemId, size, quantity }, { headers: { token } });
             } catch (error) {
-                console.log(error)
-                toast.error(error.message)
+                console.log(error);
+                toast.error(error.message);
             }
         }
-
     }
 
     const getCartAmount = () => {
@@ -129,7 +132,6 @@ const ShopContextProvider = (props) => {
 
     const getUserCart = async (token) => {
         try {
-
             const response = await axios.post(`${backendUrl}/api/cart/get`, {}, { headers: { token } })
             if (response.data.success) {
                 setCartItems(response.data.cartData)
@@ -144,12 +146,15 @@ const ShopContextProvider = (props) => {
         getProductsData()
     }, [])
 
-    // Persist cartItems in localStorage for guests
+    // Load cart items from session storage when component mounts
     useEffect(() => {
         if (!token) {
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            const savedCartItems = sessionStorage.getItem("cartItems");
+            if (savedCartItems) {
+                setCartItems(JSON.parse(savedCartItems));
+            }
         }
-    }, [cartItems, token]);
+    }, [token]);
 
     useEffect(() => {
         const fetchUserProfile = async (tok) => {

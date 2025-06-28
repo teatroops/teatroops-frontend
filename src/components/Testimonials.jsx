@@ -5,42 +5,52 @@ const testimonialsData = [
     {
         text: '"The best hibiscus tea I’ve ever had. Smooth, aromatic, and actually helps my sleep!"',
         name: '– Suman Kumar Rana',
+        rating: 5,
     },
     {
         text: '"No artificial flavors, just natural goodness. Exactly what I was looking for. "',
         name: '– Suneja Mohit',
+        rating: 5,
     },
     {
         text: '"Soothing and flavorful. Replaced my regular tea with this every morning."',
         name: '– Mugdha Sachdeva',
+        rating: 5,
     },
     {
         text: '"Best herbal teas! The aromas are subtle and natural – loved all the flavors."',
         name: '– Mugdha Sachdeva',
+        rating: 5,
     },
     {
         text: '"Natural product  calming and refreshing tea for anytime of day!"',
         name: '– Shilpi Rana',
+        rating: 5,
     },
     {
         text: '"Great in taste and fragrance  flower based teas that feel close to nature."',
         name: '– Sunil Singh',
+        rating: 5,
     },
     {
         text: '"Best tea with health benefits! Hibiscus tea is amazing for BP and immunity. "',
         name: '– Asheeran Punjabi',
+        rating: 5,
     },
     {
         text: '"A peaceful sip from the peaks  – Chamomile tea with a calming experience."',
         name: '– Juhi Gaur',
+        rating: 5,
     },
     {
         text: '"Nice! Organic teas with good aroma and value for money."',
         name: '– Suneja Mohit',
+        rating: 5,
     },
     {
         text: '"The best! Helped me sleep better and tastes smooth."',
         name: '– Suman Kumar Rana',
+        rating: 5,
     },
 ];
 
@@ -91,8 +101,20 @@ const Testimonials = () => {
                         <div
                             key={idx}
                             className='p-4 border rounded-lg shadow-sm bg-white flex flex-col justify-between min-h-[180px] h-full'
-                        >
+                        >   <div className="flex justify-center mt-2">
+                                {Array.from({ length: 5 }).map((_, starIdx) => (
+                                    <svg
+                                        key={starIdx}
+                                        className={`w-5 h-5 ${starIdx < t.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                ))}
+                            </div>
                             <p className='italic text-gray-600'>{t.text}</p>
+
                             <p className='mt-2 text-[--primary-color] text-sm font-semibold text-right'>{t.name}</p>
                         </div>
                     ))}

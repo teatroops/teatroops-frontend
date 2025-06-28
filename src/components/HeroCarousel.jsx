@@ -26,7 +26,7 @@ const HeroCarousel = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrent((prev) => (prev === total - 1 ? 0 : prev + 1))
-        }, 5000)
+        }, 50000000)
         return () => clearInterval(interval)
     }, [total])
 
@@ -38,7 +38,7 @@ const HeroCarousel = () => {
                     Discover the magic of nature in every sip—whether it’s the calming embrace of chamomile, the immune-boosting lemon & ginger, or the metabolism-supporting butterfly pea flower. Crafted from 100% organic leaves, our herbal teas offer pure, rich flavors while nurturing both your well-being and the planet.
                 </p>
             </div>
-            <div className="relative w-full h-[300px] sm:h-[500px] md:h-[600px] flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-[250px] sm:h-[500px] md:h-[600px] flex items-center justify-center overflow-hidden">
                 {/* Images */}
                 {images.map((img, idx) => (
                     <img
