@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios"; // Add axios for API requests
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import RelatedProducts from "../components/RelatedProducts";
@@ -8,7 +7,7 @@ import TemperatureIcon from "../assets/img/Temperature.svg";
 import TimeIcon from "../assets/img/Time.svg";
 import InfusionsIcon from "../assets/img/Infusions.svg";
 import { toast } from 'react-toastify';
-import Benefits, { ProductBenefits } from "../components/Benefits";
+import { ProductBenefits } from "../components/Benefits";
 import Title from "../components/Title";
 import ReviewSection from "../components/ReviewSection";
 
@@ -27,7 +26,6 @@ const Product = () => {
     }
   }, [productId, products]);
 
-
   const handleQuantityChange = (newQuantity) => {
     if (newQuantity >= 1) {
       setQuantity(newQuantity);
@@ -35,10 +33,9 @@ const Product = () => {
   };
 
   return productData ? (
-    <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100 px-4 sm:px-8">
-      <div className="flex gap-12 flex-col sm:flex-row">
+    <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100 px-4 sm:px-8 xl:px-20 max-w-[1440px] mx-auto">
+      <div className="flex gap-12 flex-col sm:flex-row lg:gap-20">
         {/* Images */}
-        {/* Mobile layout (default) */}
         <div className="flex-1 flex flex-col-reverse gap-3 sm:hidden">
           <div className="flex overflow-x-auto justify-start w-full">
             {productData.image.flat().map((item, index) => (
@@ -55,13 +52,10 @@ const Product = () => {
             <img className="w-full h-auto" src={image} alt="" />
           </div>
         </div>
-        {/* Desktop/Tablet layout (sm and up) */}
-        <div className="hidden sm:flex flex-1 flex-col items-center gap-3">
-          {/* Main Image */}
+        <div className="hidden sm:flex flex-1 flex-col gap-3">
           <div className="w-full h-max shadow-lg">
             <img className="w-full h-auto object-contain" src={image} alt="" />
           </div>
-          {/* Thumbnails */}
           <div className="flex flex-row overflow-x-auto justify-center w-full gap-2 mt-2">
             {productData.image.flat().map((item, index) => (
               <img
@@ -75,12 +69,9 @@ const Product = () => {
           </div>
         </div>
 
-        {/* Product Info */}
-        <div className="flex-1">
+        <div className="flex-1 lg:px-4 xl:pr-12">
           <h1 className="text-[--primary-color] font-medium text-2xl mt-2">{productData.name}</h1>
-
           <div className="flex items-center gap-1 mt-2">
-            {/* Star Rating */}
             <div className="flex items-center mb-1">
               {[...Array(5)].map((_, i) => (
                 <svg
@@ -93,20 +84,16 @@ const Product = () => {
                 </svg>
               ))}
             </div>
-            {/* <img src={assets.star_dull_icon} className="w-3" alt="star" /> */}
             <p className='text-gray-600 pl-2'>(122 reviews)</p>
           </div>
 
           <p className="mt-5 text-3xl text-[--primary-color] font-medium">
-            {currency}
-            {productData.price?.offer ?? productData.price?.mrp}
-            {productData.price?.offer &&
-              productData.price.offer !== productData.price.mrp && (
-                <span span className="line-through text-gray-400 ml-3 text-xl">
-                  MRP {currency}
-                  {productData.price.mrp}
-                </span>
-              )}
+            {currency}{productData.price?.offer ?? productData.price?.mrp}
+            {productData.price?.offer && productData.price.offer !== productData.price.mrp && (
+              <span className="line-through text-gray-400 ml-3 text-xl">
+                MRP {currency}{productData.price.mrp}
+              </span>
+            )}
           </p>
           <span>(Incl of all taxes)</span>
 
@@ -116,53 +103,34 @@ const Product = () => {
             </p>
           )}
 
-
-          {/* Size Display */}
           <div className="flex items-center gap-6 my-6">
-            {/* Quantity Selector */}
             <div className="flex items-center gap-2">
               <button
                 className="w-7 h-7 flex items-center justify-center rounded-full border border-[--primary-color] text-[--primary-color] bg-white hover:bg-[--primary-color] hover:text-white transition"
                 onClick={() => handleQuantityChange(quantity - 1)}
                 disabled={quantity <= 1}
-              >
-                -
-              </button>
-              <span className="min-w-[24px] text-center font-semibold text-lg select-none">
-                {quantity}
-              </span>
+              >-</button>
+              <span className="min-w-[24px] text-center font-semibold text-lg select-none">{quantity}</span>
               <button
                 className="w-7 h-7 flex items-center justify-center rounded-full border border-[--primary-color] text-[--primary-color] bg-white hover:bg-[--primary-color] hover:text-white transition"
                 onClick={() => handleQuantityChange(quantity + 1)}
-              >
-                +
-              </button>
+              >+</button>
             </div>
             <span className="border py-2 px-4 bg-green-50 rounded text-base">{productData?.size}</span>
           </div>
 
-
-          {/* button add to cart */}
           <button
             onClick={() => {
               addToCart(productData._id, productData.size, quantity);
               toast.success('Added to cart!', { position: "top-center" });
             }}
             className="bg-[--primary-color] text-white px-8 py-3 text-sm hover:bg-[#22755b]"
-          >
-            ADD TO CART
-          </button>
+          >ADD TO CART</button>
 
-          {/* Product Benefits (icons) */}
           <ProductBenefits />
 
+          <p className="mt-5 text-gray-600 w-full">{productData.description}</p>
 
-          {/* Description */}
-          <p className="mt-5 text-gray-600 w-full">
-            {productData.description}
-          </p>
-
-          {/* Benefits of Tea*/}
           {productData.benefits?.length > 0 && (
             <div className="sm:w-1/2">
               <ul className="space-y-2 mt-4 text-gray-600 font-bold leading-4">
@@ -173,9 +141,7 @@ const Product = () => {
             </div>
           )}
 
-
           <div>
-            {/* Storage Instructions */}
             {productData.storageInstructions && (
               <div className="mt-8 text-sm text-gray-700">
                 <h3 className="font-semibold mb-1">Storage Instructions</h3>
@@ -183,7 +149,6 @@ const Product = () => {
               </div>
             )}
 
-            {/* Caution */}
             {productData.caution && (
               <div className="mt-4 text-sm text-gray-700">
                 <h3 className="font-semibold mb-1">Caution</h3>
@@ -192,7 +157,6 @@ const Product = () => {
             )}
           </div>
 
-
           <hr className="mt-8 sm:w-4/5" />
         </div>
       </div>
@@ -200,11 +164,11 @@ const Product = () => {
       {/* Recommended Infusion Guide */}
       {
         productData.infusionGuide && Object.keys(productData.infusionGuide).length > 0 && (
-          <div className="my-10 px-4 text-center font-bold text-3xl">
+          <div className="my-10 px-4 text-center font-bold text-3xl max-w-6xl mx-auto">
             <Title text1={'Recommended Infusion Guide'} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 sm:gap-6">
+            <div className="flex flex-wrap justify-center gap-2">
               {productData.infusionGuide.quantity && (
-                <div className="flex flex-col items-center text-center">
+                <div className="flex flex-col items-center text-center w-full sm:w-[45%] md:w-[22%]">
                   <img src={QuantityIcon} alt="Quantity" className="w-40 h-40" />
                   <div className="infusionContent mt-[-2.5rem] w-48">
                     <p className="text-base text-[--primary-color]">Quantity</p>
@@ -213,7 +177,7 @@ const Product = () => {
                 </div>
               )}
               {productData.infusionGuide.temperature && (
-                <div className="flex flex-col items-center text-center">
+                <div className="flex flex-col items-center text-center w-full sm:w-[45%] md:w-[22%]">
                   <img src={TemperatureIcon} alt="Temperature" className="w-40 h-40" />
                   <div className="infusionContent mt-[-2.5rem] w-40">
                     <p className="text-base text-[--primary-color]">Temperature</p>
@@ -222,7 +186,7 @@ const Product = () => {
                 </div>
               )}
               {productData.infusionGuide.time && (
-                <div className="flex flex-col items-center text-center">
+                <div className="flex flex-col items-center text-center w-full sm:w-[45%] md:w-[22%]">
                   <img src={TimeIcon} alt="Time" className="w-40 h-40" />
                   <div className="infusionContent mt-[-2.5rem] w-40">
                     <p className="text-base text-[--primary-color]">Time</p>
@@ -231,7 +195,7 @@ const Product = () => {
                 </div>
               )}
               {productData.infusionGuide.infusions && (
-                <div className="flex flex-col items-center text-center">
+                <div className="flex flex-col items-center text-center w-full sm:w-[45%] md:w-[22%]">
                   <img src={InfusionsIcon} alt="Infusions" className="w-40 h-40" />
                   <div className="infusionContent mt-[-2.5rem] w-48">
                     <p className="text-base text-[--primary-color]">Infusions</p>
@@ -273,23 +237,12 @@ const Product = () => {
         )
       }
 
-
-
-
-      {/* Review Section */}
       <ReviewSection productId={productData._id} />
-
-      {/* Related Products */}
       <div className="mt-20">
-        <RelatedProducts
-          category={productData.category}
-          subCategory={productData.subCategory}
-        />
+        <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
       </div>
-    </div >
-  ) : (
-    <div className="opacity-0"></div>
-  );
+    </div>
+  ) : <div className="opacity-0"></div>;
 };
 
 export default Product;

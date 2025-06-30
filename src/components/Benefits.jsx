@@ -66,25 +66,25 @@ export const ProductBenefits = () => {
         {
             title: 'Caffeine Free',
             image: (
-                <img src={CaffeineFreeIcon} alt="Caffeine Free Icon" className="w-20 h-20" />
+                <img src={CaffeineFreeIcon} alt="Caffeine Free Icon" className="w-24 h-24" />
             ),
         },
         {
             title: 'Sugar Free',
             image: (
-                <img src={SugarFree} alt="Sugar Free Icon" className="w-20 h-20" />
+                <img src={SugarFree} alt="Sugar Free Icon" className="w-24 h-24" />
             ),
         },
         {
             title: '100% Natural',
             image: (
-                <img src={Natural} alt="100% Natural Icon" className="w-20 h-20 pb-2" />
+                <img src={Natural} alt="100% Natural Icon" className="w-24 h-24 pb-2" />
             ),
         },
         {
             title: 'No Artificial Colour',
             image: (
-                <img src={NoArtificalColour} alt="No Artificial Colour Icon" className="w-20 h-20" />
+                <img src={NoArtificalColour} alt="No Artificial Colour Icon" className="w-24 h-24" />
             ),
         },
     ];
@@ -94,7 +94,7 @@ export const ProductBenefits = () => {
             {benefitsData.map(({ title, image }, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center">
                     <div className="">{image}</div>
-                    <h3 className="text-sm font-semibold text-[--primary-color] mt-[-0.7rem]">{title}</h3>
+                    <h3 className="text-sm font-semibold text-[--primary-color] mt-[-0.9rem]">{title}</h3>
                 </div>
             ))}
         </div>
