@@ -321,14 +321,16 @@ const PlaceOrder = () => {
     }
   };
 
+  // ... existing code ...
+
   return (
     <form
       onSubmit={onSubmitHandler}
-      className="flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t"
+      className="flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t 3xl:pt-20 4xl:pt-24"
     >
       {/* ------------- Left Side ---------------- */}
-      <div className="flex flex-col gap-4 w-full sm:max-w-[480px]">
-        <div className="text-xl font-bold sm:text-2xl my-3">
+      <div className="flex flex-col gap-4 w-full sm:max-w-[480px] 3xl:max-w-[600px] 4xl:max-w-[700px]">
+        <div className="text-xl font-bold sm:text-2xl my-3 3xl:text-3xl 4xl:text-5xl">
           <Title text1={"Delivery Information"} />
         </div>
         <div className="flex gap-3">
@@ -337,7 +339,7 @@ const PlaceOrder = () => {
             onChange={onChangeHandler}
             name="firstName"
             value={formData.firstName}
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-gray-300 rounded py-2 px-4 w-full 3xl:py-3 3xl:px-6 3xl:text-2xl 4xl:py-5 4xl:px-8 4xl:text-3xl"
             type="text"
             placeholder="First name"
           />
@@ -346,7 +348,7 @@ const PlaceOrder = () => {
             onChange={onChangeHandler}
             name="lastName"
             value={formData.lastName}
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-gray-300 rounded py-2 px-4 w-full 3xl:py-3 3xl:px-6 3xl:text-2xl 4xl:py-5 4xl:px-8 4xl:text-3xl"
             type="text"
             placeholder="Last name"
           />
@@ -356,17 +358,17 @@ const PlaceOrder = () => {
           onChange={onChangeHandler}
           name="email"
           value={formData.email}
-          className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+          className="border border-gray-300 rounded py-2 px-4 w-full 3xl:py-3 3xl:px-6 3xl:text-2xl 4xl:py-5 4xl:px-8 4xl:text-3xl"
           type="email"
           placeholder="Email address"
         />
-        {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+        {errors.email && <p className="text-red-500 text-sm 3xl:text-xl 4xl:text-2xl">{errors.email}</p>}
         <input
           required
           onChange={onChangeHandler}
           name="street"
           value={formData.street}
-          className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+          className="border border-gray-300 rounded py-2 px-4 w-full 3xl:py-3 3xl:px-6 3xl:text-2xl 4xl:py-5 4xl:px-8 4xl:text-3xl"
           type="text"
           placeholder="Street"
         />
@@ -376,7 +378,7 @@ const PlaceOrder = () => {
             onChange={onChangeHandler}
             name="city"
             value={formData.city}
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-gray-300 rounded py-2 px-4 w-full 3xl:py-3 3xl:px-6 3xl:text-2xl 4xl:py-5 4xl:px-8 4xl:text-3xl"
             type="text"
             placeholder="City"
           />
@@ -385,7 +387,7 @@ const PlaceOrder = () => {
             onChange={onChangeHandler}
             name="state"
             value={formData.state}
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-gray-300 rounded py-2 px-4 w-full 3xl:py-2 3xl:px-4 3xl:text-lg 4xl:py-3 4xl:px-6 4xl:text-xl"
           >
             <option value="">Select State</option>
             {indianStates.map((state, index) => (
@@ -401,7 +403,7 @@ const PlaceOrder = () => {
             onChange={onChangeHandler}
             name="zipcode"
             value={formData.zipcode}
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-gray-300 rounded py-2 px-4 w-full 3xl:py-3 3xl:px-6 3xl:text-2xl 4xl:py-5 4xl:px-8 4xl:text-3xl"
             type="number"
             placeholder="Zipcode"
           />
@@ -410,38 +412,38 @@ const PlaceOrder = () => {
             onChange={onChangeHandler}
             name="country"
             value={formData.country}
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+            className="border border-gray-300 rounded py-2 px-4 w-full 3xl:py-3 3xl:px-6 3xl:text-2xl 4xl:py-5 4xl:px-8 4xl:text-3xl"
             type="text"
             placeholder="Country"
-            readOnly // Make the country field read-only
+            readOnly
           />
         </div>
 
         {errors.zipcode && (
-          <p className="text-red-500 text-sm">{errors.zipcode}</p>
+          <p className="text-red-500 text-sm 3xl:text-xl 4xl:text-2xl">{errors.zipcode}</p>
         )}
         <input
           required
           onChange={onChangeHandler}
           name="phone"
           value={formData.phone}
-          className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
+          className="border border-gray-300 rounded py-2 px-4 w-full 3xl:py-3 3xl:px-6 3xl:text-2xl 4xl:py-5 4xl:px-8 4xl:text-3xl"
           type="number"
           placeholder="Phone"
         />
-        {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+        {errors.phone && <p className="text-red-500 text-sm 3xl:text-xl 4xl:text-2xl">{errors.phone}</p>}
       </div>
 
       {/* ------------- Right Side ------------------ */}
-      <div className="mt-8">
-        <div className="mt-8 min-w-80">
-          <div className="bg-white rounded-lg shadow p-5 mb-6">
-            <h3 className="text-lg font-semibold mb-4 text-[--primary-color]">
+      <div className="mt-8 3xl:mt-0 ">
+        <div className="mt-8 min-w-80 3xl:min-w-[500px] 4xl:min-w-[600px]">
+          <div className="bg-white rounded-lg shadow p-5 mb-6 3xl:p-6 4xl:p-8">
+            <h3 className="text-lg font-semibold mb-4 text-[--primary-color] 3xl:text-xl 4xl:text-4xl">
               Order Summary
             </h3>
             <div className="flex flex-col gap-4 divide-y">
               {Object.keys(cartItems).length === 0 && (
-                <div className="text-gray-500 text-center py-6">
+                <div className="text-gray-500 text-center py-6 3xl:text-lg 4xl:text-xl">
                   Your cart is empty.
                 </div>
               )}
@@ -456,31 +458,30 @@ const PlaceOrder = () => {
                   return (
                     <div
                       key={productId + size}
-                      className="flex items-center gap-4 py-2"
+                      className="flex items-center gap-4 py-2 3xl:gap-6 4xl:gap-8"
                     >
                       <img
                         src={product.image[0]}
                         alt={product.name}
-                        className="w-14 h-14 object-cover rounded border"
+                        className="w-14 h-14 object-cover rounded border 3xl:w-16 3xl:h-16 4xl:w-24 4xl:h-24"
                       />
                       <div className="flex-1">
-                        <div className="font-medium text-base text-gray-900">
+                        <div className="font-medium text-base text-gray-900 3xl:text-lg 4xl:text-2xl">
                           {product.name}
                         </div>
-                        <div className="text-xs text-gray-500">
+                        <div className="text-xs text-gray-500 3xl:text-lg 4xl:text-xl">
                           Size: <b>{size}</b>
                         </div>
-                        <div className="text-xs text-gray-500">
+                        <div className="text-xs text-gray-500 3xl:text-lg 4xl:text-xl">
                           Qty: <b>{quantity}</b>
                         </div>
                         <div className="mt-1 flex items-center gap-2">
-                          <span className="text-sm line-through text-gray-400">
+                          <span className="text-sm line-through text-gray-400 3xl:text-xl 4xl:text-2xl">
                             {priceObj.mrp && `₹${priceObj.mrp}`}
                           </span>
-                          <span className="text-base font-semibold text-[--primary-color]">
+                          <span className="text-base font-semibold text-[--primary-color] 3xl:text-lg 4xl:text-2xl">
                             ₹{priceToUse}
                           </span>
-                          {/* {priceObj.discountNote && <span className="ml-2 text-xs text-red-500">{priceObj.discountNote}</span>} */}
                         </div>
                       </div>
                       {(() => {
@@ -517,7 +518,7 @@ const PlaceOrder = () => {
                             (priceObj.offer ?? priceObj.mrp) * quantity;
                         }
                         return (
-                          <div className="font-bold text-lg text-gray-700 min-w-[60px] text-right">
+                          <div className="font-bold text-lg text-gray-700 min-w-[60px] text-right 3xl:text-xl 4xl:text-2xl">
                             ₹{itemTotal.toFixed(2)}
                           </div>
                         );
@@ -589,7 +590,7 @@ const PlaceOrder = () => {
 
               return (
                 <>
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm 3xl:text-base 4xl:text-2xl">
                     <span>Total Items:</span>
                     <span>
                       {Object.entries(cartItems).reduce(
@@ -601,13 +602,13 @@ const PlaceOrder = () => {
                   </div>
                   {discountTotal > 0 ? (
                     <>
-                      <div className="flex justify-between text-sm">
+                      <div className="flex justify-between text-sm 3xl:text-base 4xl:text-2xl">
                         <span>Total MRP:</span>
                         <span>₹{totalMrp.toFixed(2)}</span>
                       </div>
-                      <div className="flex justify-between text-[--primary-color] text-sm">
+                      <div className="flex justify-between text-[--primary-color] text-sm 3xl:text-base 4xl:text-2xl">
                         <span>Discount:</span>
-                        <div className="flex flex-col text-xs text-[--primary-color]">
+                        <div className="flex flex-col text-xs text-[--primary-color] 3xl:text-sm 4xl:text-2xl">
                           {Array.from(appliedDiscountNotes).length > 0 && (
                             <span>
                               {" "}
@@ -619,16 +620,16 @@ const PlaceOrder = () => {
                       </div>
                     </>
                   ) : (
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between text-sm 3xl:text-base 4xl:text-2xl">
                       <span>Subtotal:</span>
                       <span>₹{subtotal.toFixed(2)}</span>
                     </div>
                   )}
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm 3xl:text-base 4xl:text-2xl">
                     <span>Delivery:</span>
                     <span>₹{delivery_fee.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-base font-semibold text-[--primary-color]">
+                  <div className="flex justify-between text-base font-semibold text-[--primary-color] 3xl:text-lg 4xl:text-2xl">
                     <span>Total:</span>
                     <span>
                       ₹{finalTotal > 0 ? finalTotal.toFixed(2) : "0.00"}
@@ -640,19 +641,19 @@ const PlaceOrder = () => {
           </div>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-12 3xl:mt-2 4xl:mt-0">
           <Title text1={"PAYMENT"} text2={"METHOD"} />
           {/* --------------- Payment Method Selection ------------- */}
           <div className="flex gap-3 flex-col lg:flex-row">
             <div
               onClick={() => setMethod("razorpay")}
-              className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
+              className="flex items-center gap-3 border p-2 px-3 cursor-pointer 3xl:p-3 3xl:px-4 4xl:p-4 4xl:px-5"
             >
               <p
                 className={`min-w-3.5 h-3.5 border rounded-full ${method === "razorpay" ? "bg-green-400" : ""
-                  }`}
+                  } 3xl:min-w-4 3xl:h-4 4xl:min-w-5 4xl:h-5`}
               ></p>
-              <img className="h-5 mx-4" src={assets.razorpay_logo} alt="" />
+              <img className="h-5 mx-4 3xl:h-6 4xl:h-10" src={assets.razorpay_logo} alt="" />
             </div>
             {/* <div onClick={() => setMethod('cod')} className='flex items-center gap-3 border p-2 px-3 cursor-pointer'>
               <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'cod' ? 'bg-green-400' : ''}`}></p>
@@ -660,10 +661,10 @@ const PlaceOrder = () => {
             </div> */}
           </div>
 
-          <div className="w-full text-end mt-8">
+          <div className="w-full text-end mt-8 3xl:mt-12 4xl:mt-8">
             <button
               type="submit"
-              className="bg-black text-white px-16 py-3 text-sm"
+              className="bg-black text-white px-16 py-3 text-sm 3xl:px-20 3xl:py-4 3xl:text-base 4xl:px-24 4xl:py-5 4xl:text-2xl"
             >
               PLACE ORDER
             </button>

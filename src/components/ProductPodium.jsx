@@ -37,23 +37,22 @@ const teas = [
 const ProductPodium = () => {
 
     return (
-        <section className="py-10 px-2 sm:px-8 text-center font-bold text-3xl">
+        <section className="py-10 px-2 sm:px-8 text-center font-bold text-3xl 3xl:text-4xl 4xl:text-5xl">
             <Title text1="Our Teas" />
-            <p className="text-gray-600 text-lg font-medium mb-8">Discover our premium selection of handpicked teas, each offering unique flavors and health benefits.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <p className="text-gray-600 text-lg font-medium mb-8 3xl:text-xl 4xl:text-2xl">Discover our premium selection of handpicked teas, each offering unique flavors and health benefits.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto 3xl:max-w-8xl 4xl:max-w-full">
                 {teas.map((tea, idx) => (
                     <Link
                         key={idx}
-                        className="bg-white text-start rounded-lg shadow flex flex-col items-center p-2"
+                        className="bg-white text-start rounded-lg shadow flex flex-col items-center p-2 3xl:p-4 4xl:p-6"
                     >
                         <img
                             src={tea.image}
                             alt={tea.name}
-                            className="w-full  object-contain rounded mb-4 shadow-md"
-                            style={{ background: '#f3f3f3' }}
+
                         />
-                        <h3 className={`w-full text-start text-[--primary-color] font-bold text-lg mb-2 ${tea.color}`}>{tea.name}</h3>
-                        <p className="w-full text-sm text-gray-700 text-start font-medium">{tea.desc}</p>
+                        <h3 className={`w-full text-start text-[--primary-color] font-bold text-lg mb-2 3xl:text-xl 4xl:text-4xl 4xl:mt-2 ${tea.color}`}>{tea.name}</h3>
+                        <p className="w-full text-sm text-gray-700 text-start font-medium 3xl:text-base 4xl:text-2xl 4xl:mt-2">{tea.desc}</p>
                     </Link>
                 ))}
             </div>

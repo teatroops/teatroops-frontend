@@ -55,7 +55,7 @@ const testimonialsData = [
 ];
 
 const getSlidesToShow = () => {
-    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 1024) return 3; // lg and above (including 3xl, 4xl)
     if (window.innerWidth >= 640) return 2;
     return 1;
 };
@@ -81,31 +81,33 @@ const Testimonials = () => {
 
     return (
         <div className='my-10 text-center relative'>
-            <div className='text-center font-bold mt-2 py-4 text-3xl'>
+            <div className='text-center font-bold mt-2 py-4 text-3xl 3xl:text-4xl 4xl:text-5xl'>
                 <Title text1={'Our Customer Say'} />
             </div>
             <div className="relative flex items-center justify-center mt-6 px-4">
                 {/* Left Arrow */}
                 <button
                     onClick={goPrev}
-                    className="absolute left-0 z-10  bg-white/80 hover:bg-[--primary-color] rounded-full p-2 shadow-md"
+                    className="absolute left-0 z-10 bg-white/80 hover:bg-[--primary-color] rounded-full p-2 shadow-md 3xl:p-3 4xl:p-4"
                     aria-label="Previous"
                 >
-                    <svg className="w-6 h-6  hover:text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 hover:text-white 3xl:w-8 3xl:h-8 4xl:w-10 4xl:h-10" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
                 {/* Testimonials */}
-                <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl mx-auto `}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl 3xl:max-w-8xl 4xl:max-w-[80%] mx-auto">
                     {testimonialsData.slice(current, current + slidesToShow).map((t, idx) => (
                         <div
                             key={idx}
-                            className='p-4 border rounded-lg shadow-sm bg-white flex flex-col justify-between min-h-[180px] h-full'
-                        >   <div className="flex justify-center mt-2">
+                            className='p-4 border rounded-lg shadow-sm bg-white flex flex-col justify-between min-h-[180px] h-full
+                            3xl:p-8 3xl:min-h-[300px] 4xl:p-12 4xl:min-h-[380px]'
+                        >
+                            <div className="flex justify-center mt-2">
                                 {Array.from({ length: 5 }).map((_, starIdx) => (
                                     <svg
                                         key={starIdx}
-                                        className={`w-5 h-5 ${starIdx < t.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                                        className={`w-5 h-5 3xl:w-7 3xl:h-7 4xl:w-9 4xl:h-9 ${starIdx < t.rating ? 'text-yellow-400' : 'text-gray-300'}`}
                                         fill="currentColor"
                                         viewBox="0 0 24 24"
                                     >
@@ -113,19 +115,18 @@ const Testimonials = () => {
                                     </svg>
                                 ))}
                             </div>
-                            <p className='italic text-gray-600'>{t.text}</p>
-
-                            <p className='mt-2 text-[--primary-color] text-sm font-semibold text-right'>{t.name}</p>
+                            <p className='italic text-gray-600 text-base sm:text-lg lg:text-xl 3xl:text-2xl 4xl:text-3xl'>{t.text}</p>
+                            <p className='mt-2 text-[--primary-color] text-sm font-semibold text-right 3xl:text-lg 4xl:text-xl'>{t.name}</p>
                         </div>
                     ))}
                 </div>
                 {/* Right Arrow */}
                 <button
                     onClick={goNext}
-                    className="absolute right-0 z-10 bg-white/80 hover:bg-[--primary-color] rounded-full p-2 shadow-md hover:text-white"
+                    className="absolute right-0 z-10 bg-white/80 hover:bg-[--primary-color] rounded-full p-2 shadow-md hover:text-white 3xl:p-3 4xl:p-4"
                     aria-label="Next"
                 >
-                    <svg className="w-6 h-6 hover:text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 hover:text-white 3xl:w-8 3xl:h-8 4xl:w-10 4xl:h-10" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
@@ -136,7 +137,7 @@ const Testimonials = () => {
                     <button
                         key={idx}
                         onClick={() => setCurrent(idx)}
-                        className={`w-3 h-3 rounded-full ${idx === current ? 'bg-[--primary-color]' : 'bg-white border border-[--primary-color]'}`}
+                        className={`w-3 h-3 3xl:w-4 3xl:h-4 4xl:w-5 4xl:h-5 rounded-full ${idx === current ? 'bg-[--primary-color]' : 'bg-white border border-[--primary-color]'}`}
                         aria-label={`Go to slide ${idx + 1}`}
                     />
                 ))}

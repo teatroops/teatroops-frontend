@@ -63,15 +63,15 @@ const Login = () => {
   }, [token])
 
   return (
-    <form onSubmit={onSubmitHandler} className='flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800'>
+    <form onSubmit={onSubmitHandler} className='flex flex-col items-center w-[90%] sm:max-w-96 m-auto my-14 gap-4 text-gray-800 3xl:max-w-[500px] 4xl:max-w-[600px]'>
       <div className='inline-flex items-center gap-2 mb-2 mt-10'>
-        <p className='prata-regular text-[--primary-color] text-3xl'>{currentState}</p>
-        <hr className='border-none h-[1.5px] w-8 bg-[--primary-color]' />
+        <p className='prata-regular text-[--primary-color] text-3xl 3xl:text-4xl 4xl:text-5xl'>{currentState}</p>
+        <hr className='border-none h-[1.5px] w-8 bg-[--primary-color] 3xl:w-10 4xl:w-12' />
       </div>
-      {currentState === 'Login' ? '' : <input onChange={(e) => setName(e.target.value)} value={name} type="text" className='w-full px-3 py-2 border border-gray-800' placeholder='Name' required />}
-      <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" className='w-full px-3 py-2 border border-greeen-800' placeholder='Email' required />
-      <input onChange={(e) => setPasword(e.target.value)} value={password} type="password" className='w-full px-3 py-2 border border-gray-800' placeholder='Password' required />
-      <div className='w-full flex justify-between text-sm mt-[-8px]'>
+      {currentState === 'Login' ? '' : <input onChange={(e) => setName(e.target.value)} value={name} type="text" className='w-full px-3 py-2 border border-gray-800 3xl:px-4 3xl:py-3 3xl:text-lg 4xl:px-5 4xl:py-4 4xl:text-xl' placeholder='Name' required />}
+      <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" className='w-full px-3 py-2 border border-greeen-800 3xl:px-4 3xl:py-3 3xl:text-lg 4xl:px-5 4xl:py-4 4xl:text-xl' placeholder='Email' required />
+      <input onChange={(e) => setPasword(e.target.value)} value={password} type="password" className='w-full px-3 py-2 border border-gray-800 3xl:px-4 3xl:py-3 3xl:text-lg 4xl:px-5 4xl:py-4 4xl:text-xl' placeholder='Password' required />
+      <div className='w-full flex justify-between text-sm mt-[-8px] 3xl:text-base 4xl:text-lg'>
         {/* <p className=' cursor-pointer'>Forgot your password?</p> */}
         {
           currentState === 'Login'
@@ -79,7 +79,7 @@ const Login = () => {
             : <p onClick={() => setCurrentState('Login')} className=' cursor-pointer'>Login Here</p>
         }
       </div>
-      <button className='bg-[--primary-color] border-2 border-[--primary-color] text-white font-light px-8 py-2 mt-4'>{currentState === 'Login' ? 'Sign In' : 'Sign Up'}</button>
+      <button className='bg-[--primary-color] border-2 border-[--primary-color] text-white font-light px-8 py-2 mt-4 3xl:px-10 3xl:py-3 3xl:text-lg 4xl:px-12 4xl:py-4 4xl:text-xl'>{currentState === 'Login' ? 'Sign In' : 'Sign Up'}</button>
     </form>
   )
 }

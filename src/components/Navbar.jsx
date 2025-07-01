@@ -19,9 +19,9 @@ const Navbar = () => {
     return (
         <div className='flex items-center justify-between py-2 font-medium'>
 
-            <Link to='/'><img src={assets.logo} className='w-44' alt="" /></Link>
+            <Link to='/'><img src={assets.logo} className='w-44 3xl:w-52 4xl:w-64' alt="" /></Link>
 
-            <ul className='hidden sm:flex gap-5 mt-2 text-sm text-[--primary-color]'>
+            <ul className='hidden sm:flex gap-5 mt-2 text-sm text-[--primary-color] 3xl:text-base 4xl:text-2xl'>
 
                 <NavLink to='/' className='flex flex-col items-center gap-1'>
                     <p>HOME</p>
@@ -47,23 +47,23 @@ const Navbar = () => {
             </ul>
 
             <div className='flex items-center gap-6'>
-                <img onClick={() => { setShowSearch(true); navigate('/collection') }} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
+                <img onClick={() => { setShowSearch(true); navigate('/collection') }} src={assets.search_icon} className='w-5 3xl:w-6 4xl:w-8 cursor-pointer' alt="" />
 
                 <div className='group relative'>
-                    <img onClick={() => token ? null : navigate('/login')} className='w-5 cursor-pointer' src={assets.profile_icon} alt="" />
+                    <img onClick={() => token ? null : navigate('/login')} className='w-5 3xl:w-6 4xl:w-8 cursor-pointer' src={assets.profile_icon} alt="" />
                     {/* Dropdown Menu */}
                     {token &&
                         <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-50'>
-                            <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded shadow-lg'>
-                                <p onClick={() => navigate('/profile')} className='cursor-pointer hover:text-[--primary-color]'>My Profile</p>
-                                <p onClick={() => navigate('/orders')} className='cursor-pointer hover:text-[--primary-color]'>Orders</p>
-                                <p onClick={logout} className='cursor-pointer hover:text-[--primary-color]'>Logout</p>
+                            <div className='flex flex-col gap-2 w-36 3xl:w-44 4xl:w-56 py-3 px-5 bg-slate-100 text-gray-500 rounded shadow-lg'>
+                                <p onClick={() => navigate('/profile')} className='cursor-pointer hover:text-[--primary-color] 3xl:text-lg 4xl:text-2xl'>My Profile</p>
+                                <p onClick={() => navigate('/orders')} className='cursor-pointer hover:text-[--primary-color] 3xl:text-lg 4xl:text-2xl'>Orders</p>
+                                <p onClick={logout} className='cursor-pointer hover:text-[--primary-color] 3xl:text-lg 4xl:text-2xl'>Logout</p>
                             </div>
                         </div>}
                 </div>
                 <Link to='/cart' className='relative'>
-                    <img src={assets.cart_icon} className='w-5 min-w-5' alt="" />
-                    <p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-[--primary-color] text-white aspect-square rounded-full text-[8px]'>{getCartCount()}</p>
+                    <img src={assets.cart_icon} className='w-5 min-w-5 3xl:w-6 4xl:w-8' alt="" />
+                    <p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-[--primary-color] text-white aspect-square rounded-full text-[8px] 3xl:w-5 3xl:text-[10px] 3xl:leading-5 4xl:w-6 4xl:text-[14px] 4xl:leading-6 flex items-center justify-center'>{getCartCount()}</p>
                 </Link>
                 <img onClick={() => setVisible(true)} src={assets.menu_icon} className='w-5 cursor-pointer sm:hidden' alt="" />
             </div>

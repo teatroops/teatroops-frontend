@@ -86,10 +86,10 @@ const Collection = () => {
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t mb-6">
       {/* Filter Options */}
-      <div className="min-w-60">
+      <div className="min-w-60 3xl:min-w-80 4xl:min-w-96">
         <p
           onClick={() => setShowFilter(!showFilter)}
-          className="my-2 text-xl flex items-center cursor-pointer gap-2"
+          className="my-2 text-xl 3xl:text-2xl 4xl:text-3xl flex items-center cursor-pointer gap-2"
         >
           FILTERS
           <img
@@ -104,11 +104,11 @@ const Collection = () => {
           className={`border border-gray-300 pl-5 py-3 my-5 ${showFilter ? "" : "hidden"
             } sm:block`}
         >
-          <p className="mb-3 text-sm font-medium">TYPE</p>
-          <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
+          <p className="mb-3 text-sm 3xl:text-lg 4xl:text-xl font-medium">TYPE</p>
+          <div className="flex flex-col gap-2 text-sm 3xl:text-xl 4xl:text-2xl font-light text-gray-700">
             <p className="flex gap-2">
               <input
-                className="w-3"
+                className="w-3 3xl:w-4 4xl:w-6"
                 type="checkbox"
                 value={"Loose Lead"}
                 onChange={toggleSubCategory}
@@ -117,7 +117,7 @@ const Collection = () => {
             </p>
             <p className="flex gap-2">
               <input
-                className="w-3"
+                className="w-3 3xl:w-4 4xl:w-6"
                 type="checkbox"
                 value={"Tea Bags"}
                 onChange={toggleSubCategory}
@@ -130,15 +130,15 @@ const Collection = () => {
 
       {/* Right Side */}
       <div className="flex-1">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 text-base sm:text-2xl mb-4 font-bold">
+        <div className="max-w-screen-xl 3xl:max-w-screen-2xl 4xl:max-w-screen-3xl mx-auto px-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 text-base sm:text-2xl 3xl:text-3xl 4xl:text-5xl mb-4 font-bold">
             {/* Title stays full-width on mobile, inline on sm+ */}
             <Title text1={"All Collection"} />
 
             {/* Dropdown moves below title on mobile */}
             <select
               onChange={(e) => setSortType(e.target.value)}
-              className="border-2 border-gray-300 px-2 py-1 text-xs sm:text-sm sm:px-3 sm:py-2 rounded-md w-fit"
+              className="border-2 border-gray-300 px-2 py-1 text-xs sm:text-sm 3xl:text-lg 4xl:text-2xl sm:px-3 sm:py-2 rounded-md w-fit"
             >
               <option value="relevant">Sort by: Relevant</option>
               <option value="low-high">Sort by: Price Low to High</option>

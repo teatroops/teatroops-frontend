@@ -50,7 +50,7 @@ const CartTotal = () => {
           const discountedQty = eligibleSets * discountInfo.minQty;
           const itemDiscount = (discountedQty * mrp * discountInfo.percent) / 100;
           discountTotal += itemDiscount;
-          
+
           // Add discounted amount to subtotal
           subtotal += mrp * quantity - itemDiscount;
           if (note && !appliedNotesSet.has(note)) {
@@ -72,11 +72,11 @@ const CartTotal = () => {
 
   return (
     <div className="w-full">
-      <div className="font-bold mt-2 py-4 text-3xl">
+      <div className="font-bold mt-2 py-4 text-3xl 3xl:text-4xl 4xl:text-5xl">
         <Title text1={"Cart Totals"} />
       </div>
 
-      <div className="flex flex-col gap-2 mt-2 text-sm">
+      <div className="flex flex-col gap-2 mt-2 text-sm 3xl:text-xl 4xl:text-2xl">
         <div className="flex justify-between">
           <p>Total MRP</p>
           <p>
@@ -101,7 +101,7 @@ const CartTotal = () => {
         {discountTotal > 0 && (
           <div className="flex justify-between text-[--primary-color]">
             <p>Discount</p>
-            <div className="flex flex-col text-xs text-[--primary-color]">
+            <div className="flex flex-col text-xs 3xl:text-lg 4xl:text-2xl text-[--primary-color]">
               {appliedDiscountNotes.length > 0 && (
                 <span>Applied :{appliedDiscountNotes.join(", ")}</span>
               )}

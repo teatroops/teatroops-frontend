@@ -113,50 +113,50 @@ const ReviewSection = ({ productId }) => {
   };
 
   return (
-    <section className="my-16 w-full max-w-5xl mx-auto px-2">
+    <section className="my-16 w-full max-w-5xl mx-auto px-2 3xl:max-w-xl 4xl:max-w-[90%]">
       {/* Summary Box */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8 mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8 mb-8 3xl:gap-12">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-3xl font-bold">{typeof summary?.average === 'number' ? summary.average.toFixed(1) : '0.0'}</span>
+            <span className="text-3xl font-bold 3xl:text-4xl 4xl:text-5xl">{typeof summary?.average === 'number' ? summary.average.toFixed(1) : '0.0'}</span>
             <div className="flex">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} filled={i < Math.round(summary.average)} />
               ))}
             </div>
           </div>
-          <div className="text-sm text-gray-600 mt-1">Based on {summary.total} Reviews</div>
+          <div className="text-sm text-gray-600 mt-1 3xl:text-lg 4xl:text-xl">Based on {summary.total} Reviews</div>
         </div>
-        <div className="flex flex-col gap-1 w-56">
+        <div className="flex flex-col gap-1 w-56 3xl:w-64 4xl:w-96">
           {[5, 4, 3, 2, 1].map((star, i) => (
             <div key={star} className="flex items-center gap-2">
-              <span className="w-4 text-sm">{star}</span>
+              <span className="w-4 text-sm 3xl:w-5 3xl:text-base 4xl:w-6 4xl:text-4xl">{star}</span>
               <Star filled={true} />
-              <div className="bg-gray-200 rounded h-2 flex-1 mx-1">
+              <div className="bg-gray-200 rounded h-2 flex-1 mx-1 3xl:h-3 4xl:h-6">
                 <div style={{ width: `${summary.total ? (summary.stars[5 - star] / summary.total) * 100 : 0}%` }}
-                  className="bg-yellow-400 h-2 rounded"></div>
+                  className="bg-yellow-400 h-2 rounded 3xl:h-3 4xl:h-6"></div>
               </div>
-              <span className="w-6 text-xs">{Array.isArray(summary.stars) && summary.stars[5 - star] !== undefined ? summary.stars[5 - star] : 0}</span>
+              <span className="w-6 text-xs 3xl:w-8 3xl:text-lg 4xl:w-12 4xl:text-xl">{Array.isArray(summary.stars) && summary.stars[5 - star] !== undefined ? summary.stars[5 - star] : 0}</span>
             </div>
           ))}
         </div>
-        <button onClick={scrollToForm} className="bg-black text-white px-5 py-2 rounded hover:bg-gray-800 transition self-start">Write a review</button>
+        <button onClick={scrollToForm} className="bg-black text-white px-5 py-2 rounded hover:bg-gray-800 transition self-start 3xl:px-6 3xl:py-3 3xl:text-lg 4xl:px-8 4xl:py-4 4xl:text-2xl">Write a review</button>
       </div>
 
       {/* Review Form */}
       {showForm && (
-        <form ref={formRef} onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md mb-12 flex flex-col gap-4 w-full max-w-lg mx-auto">
+        <form ref={formRef} onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md mb-12 flex flex-col gap-4 w-full max-w-lg mx-auto 3xl:p-8 3xl:max-w-xl 4xl:p-10 4xl:max-w-3xl">
           <div className="flex items-center gap-2">
             {[...Array(5)].map((_, i) => (
               <Star key={i} filled={i < form.rating} onClick={() => handleStar(i)} />
             ))}
-            <span className="ml-2 text-sm">{form.rating ? `${form.rating} Star${form.rating > 1 ? 's' : ''}` : ''}</span>
+            <span className="ml-2 text-sm 3xl:text-lg 4xl:text-2xl">{form.rating ? `${form.rating} Star${form.rating > 1 ? 's' : ''}` : ''}</span>
           </div>
           <input
             name="title"
             value={form.title}
             onChange={handleChange}
-            className="border px-3 py-2 rounded w-full"
+            className="border px-3 py-2 rounded w-full 3xl:px-4 3xl:py-3 3xl:text-lg 4xl:px-5 4xl:py-4 4xl:text-2xl"
             placeholder="Review title"
             required
           />
@@ -164,12 +164,12 @@ const ReviewSection = ({ productId }) => {
             name="comment"
             value={form.comment}
             onChange={handleChange}
-            className="border px-3 py-2 rounded w-full min-h-[80px]"
+            className="border px-3 py-2 rounded w-full min-h-[80px] 3xl:px-4 3xl:py-3 3xl:text-lg 3xl:min-h-[100px] 4xl:px-5 4xl:py-4 4xl:text-2xl 4xl:min-h-[120px]"
             placeholder="Write your review..."
             required
           />
-          {error && <div className="text-red-500 text-sm">{error}</div>}
-          <button disabled={loading} className="bg-[--primary-color] text-white px-6 py-2 rounded hover:bg-[--primary-color] transition">
+          {error && <div className="text-red-500 text-sm 3xl:text-base 4xl:text-lg">{error}</div>}
+          <button disabled={loading} className="bg-[--primary-color] text-white px-6 py-2 rounded hover:bg-[--primary-color] transition 3xl:px-8 3xl:py-3 3xl:text-2xl 4xl:px-10 4xl:py-4 4xl:text-2xl">
             {loading ? 'Submitting...' : 'Submit Review'}
           </button>
         </form>
@@ -178,13 +178,13 @@ const ReviewSection = ({ productId }) => {
       {/* Reviews Slider */}
       <div className="relative mt-8">
         {reviews.length === 0 && (
-          <div className="text-center text-gray-500">No reviews yet. Be the first to write one!</div>
+          <div className="text-center text-gray-500 3xl:text-lg 4xl:text-2xl">No reviews yet. Be the first to write one!</div>
         )}
         {reviews.length > 0 && (
           <div className="flex items-center">
             {/* Left arrow */}
             <button
-              className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-[--primary-color] mr-2 shadow transition disabled:opacity-50"
+              className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-[--primary-color] mr-2 shadow transition disabled:opacity-50 3xl:w-12 3xl:h-12 4xl:w-14 4xl:h-14"
               onClick={() => sliderRef.current.scrollBy({ left: -320, behavior: 'smooth' })}
               disabled={sliderScroll === 0}
               aria-label="Scroll left"
@@ -194,23 +194,23 @@ const ReviewSection = ({ productId }) => {
             {/* Slider */}
             <div
               ref={sliderRef}
-              className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory md:w-[960px] w-full px-1"
+              className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory md:w-[960px] w-full px-1 3xl:gap-8 3xl:md:w-[1200px] 4xl:gap-4 4xl:md:w-[90%]"
               style={{ scrollBehavior: 'smooth' }}
               onScroll={handleSliderScroll}
             >
               {reviews.map(r => (
                 <div
                   key={r._id}
-                  className="bg-white p-6 flex flex-col gap-2 min-w-[300px] max-w-[320px] snap-center"
+                  className="bg-white p-6 flex flex-col gap-2 min-w-[300px] max-w-[320px] border-2 snap-center 3xl:p-8 3xl:min-w-[360px] 3xl:max-w-[380px] 4xl:p-10 4xl:min-w-[400px] 4xl:max-w-[420px]"
                   style={{ flex: '0 0 320px' }}
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-xl font-bold text-gray-700">
+                    <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-xl font-bold text-gray-700 3xl:w-12 3xl:h-12 3xl:text-2xl 4xl:w-14 4xl:h-14 4xl:text-3xl">
                       {getInitial(r.name)}
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">{r.name}</div>
-                      <div className="text-xs text-gray-500">{new Date(r.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: '2-digit' })}</div>
+                      <div className="font-semibold text-gray-900 3xl:text-lg 4xl:text-2xl">{r.name}</div>
+                      <div className="text-xs text-gray-500 3xl:text-sm 4xl:text-xl">{new Date(r.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: '2-digit' })}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-1 mb-1">
@@ -218,14 +218,14 @@ const ReviewSection = ({ productId }) => {
                       <Star key={i} filled={i < r.rating} />
                     ))}
                   </div>
-                  <div className="font-bold mt-2">{r.title}</div>
-                  <div className="text-gray-700 text-sm">{r.comment}</div>
+                  <div className="font-bold mt-2 3xl:text-lg 4xl:text-3xl">{r.title}</div>
+                  <div className="text-gray-700 text-sm 3xl:text-base 4xl:text-2xl">{r.comment}</div>
                 </div>
               ))}
             </div>
             {/* Right arrow */}
             <button
-              className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-[--primary-color] ml-2 shadow transition disabled:opacity-50"
+              className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-[--primary-color] ml-2 shadow transition disabled:opacity-50 3xl:w-12 3xl:h-12 4xl:w-14 4xl:h-14"
               onClick={() => sliderRef.current.scrollBy({ left: 320, behavior: 'smooth' })}
               disabled={sliderScroll >= maxSliderScroll}
               aria-label="Scroll right"

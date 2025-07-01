@@ -36,23 +36,26 @@ const Faq = () => {
     };
 
     return (
-        <div className="py-12">
-            <div className="max-w-4xl mx-auto font-bold mt-2 py-4 text-3xl">
+        <div className="py-12 3xl:py-20 4xl:py-28">
+            <div className="max-w-4xl 3xl:max-w-6xl 4xl:max-w-[70%] mx-auto font-bold mt-2 py-4 text-3xl 3xl:text-4xl 4xl:text-5xl">
                 <Title text1={'Frequently Asked Questions'} />
-                <div className="space-y-4 mt-6">
+                <div className="space-y-4 mt-6 3xl:mt-8 4xl:mt-10">
                     {faqs.map((item, index) => (
-                        <div key={index} className="p-4 border border-gray-200 rounded-lg shadow-sm bg-white">
+                        <div
+                            key={index}
+                            className="p-4 3xl:p-6 4xl:p-10 border border-gray-200 rounded-lg shadow-sm bg-white"
+                        >
                             <button
                                 className="w-full text-left flex justify-between items-center focus:outline-none"
                                 onClick={() => toggleAccordion(index)}
                             >
-                                <h3 className="text-lg font-medium text-gray-700">{item.question}</h3>
-                                <span className=" text-xs transform transition-transform duration-200 text-[--primary-color]">
+                                <h3 className="text-lg 3xl:text-2xl 4xl:text-3xl font-medium text-gray-700">{item.question}</h3>
+                                <span className="text-xs 3xl:text-lg 4xl:text-2xl transform transition-transform duration-200 text-[--primary-color]">
                                     {activeIndex === index ? '▲' : '▼'}
                                 </span>
                             </button>
                             {activeIndex === index && (
-                                <p className="text-gray-600 text-sm sm:text-base mt-2">{item.answer}</p>
+                                <p className="text-gray-600 text-sm sm:text-base 3xl:text-lg 4xl:text-2xl mt-2 3xl:mt-4 4xl:mt-6">{item.answer}</p>
                             )}
                         </div>
                     ))}

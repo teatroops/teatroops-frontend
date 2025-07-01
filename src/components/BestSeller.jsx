@@ -48,9 +48,9 @@ const BestSeller = () => {
 
   return (
     <div className='my-10'>
-      <div className='text-center font-bold mt-2 py-4 text-3xl'>
+      <div className='text-center font-bold mt-2 py-4 text-3xl 3xl:text-4xl 4xl:text-5xl'>
         <Title text1={'Best Sellers'} />
-        <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
+        <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base 3xl:text-lg 4xl:text-2xl text-gray-600'>
           Handpicked favorites, loved by our Tea Troops! These blends have become staples in the daily rituals of our loyal customers.
         </p>
       </div>
@@ -64,7 +64,7 @@ const BestSeller = () => {
           className={`absolute hover:text-white  left-0 top-1/2 -translate-y-1/2 z-10 bg-green-300 border border-[--primary-color] rounded-full shadow p-2 flex items-center justify-center transition-opacity duration-200 ${isAtStart ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[--primary-color]'}`}
           aria-label="Scroll left"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 3xl:w-8 3xl:h-8 4xl:w-10 4xl:h-10">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
         </button>
@@ -75,20 +75,20 @@ const BestSeller = () => {
           className={`absolute hover:text-white right-0 top-1/2 -translate-y-1/2 z-10 bg-green-300 border border-[--primary-color]  rounded-full shadow p-2 flex items-center justify-center transition-opacity duration-200 ${isAtEnd ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[--primary-color]'}`}
           aria-label="Scroll right"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 3xl:w-8 3xl:h-8 4xl:w-10 4xl:h-10">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
         </button>
         <div ref={sliderRef} className="overflow-x-auto scroll-smooth px-4 py-4">
           <div className="flex gap-6 snap-x snap-mandatory">
             {bestSeller.map((item, index) => (
-              <div key={index} className="w-[70vw] min-w-[180px] max-w-[250px] sm:min-w-[220px] sm:max-w-[250px] snap-start shrink-0">
+              <div key={index} className="w-[70vw] min-w-[180px] max-w-[250px] sm:min-w-[220px] sm:max-w-[250px] 3xl:min-w-[280px] 3xl:max-w-[300px] 4xl:min-w-[320px] 4xl:max-w-[350px] snap-start shrink-0">
                 <ProductItem
                   id={item._id}
                   name={item.name}
                   image={item.image}
                   price={item.price}
-                  imgHeightClass="h-40"
+                  imgHeightClass="h-40 3xl:h-48 4xl:h-56"
                   benefits={item.benefits}
                 />
               </div>
