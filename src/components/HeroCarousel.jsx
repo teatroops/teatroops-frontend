@@ -38,7 +38,7 @@ const HeroCarousel = () => {
                     Discover the magic of nature in every sip—whether it's the calming embrace of chamomile, the immune-boosting lemon & ginger, or the metabolism-supporting butterfly pea flower. Crafted from 100% organic leaves, our herbal teas offer pure, rich flavors while nurturing both your well-being and the planet.
                 </p>
             </div>
-            <div className="relative w-full h-[250px] sm:h-[500px] md:h-[400px] lg:h-[500px] 3xl:h-[700px] 4xl:h-[900px] flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-[250px] sm:h-[500px] md:h-[400px] lg:h-[535px] 3xl:h-[700px] 4xl:h-[936px] flex items-center justify-center overflow-hidden">
                 {/* Images */}
                 {images.map((img, idx) => (
                     <img

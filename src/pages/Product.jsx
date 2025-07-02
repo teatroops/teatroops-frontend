@@ -169,7 +169,7 @@ const Product = () => {
             <div className="flex flex-wrap justify-center gap-2">
               {productData.infusionGuide.quantity && (
                 <div className="flex flex-col items-center text-center w-full sm:w-[45%] md:w-[22%]">
-                  <img src={QuantityIcon} alt="Quantity" className="w-40 h-40 3xl:w-48 3xl:h-48 4xl:w-56 4xl:h-56" />
+                  <img src={QuantityIcon} alt="Quantity" className="w-40 h-40 3xl:w-48 3xl:h-48 4xl:w-72 4xl:h-72" />
                   <div className="infusionContent mt-[-2.5rem] w-48 3xl:mt-[-3rem] 3xl:w-56 4xl:mt-[-3.5rem] 4xl:w-64">
                     <p className="text-base text-[--primary-color] 3xl:text-lg 4xl:text-3xl">Quantity</p>
                     <p className="text-sm text-gray-600 3xl:text-base 4xl:text-2xl">{productData.infusionGuide.quantity}</p>
@@ -178,7 +178,7 @@ const Product = () => {
               )}
               {productData.infusionGuide.temperature && (
                 <div className="flex flex-col items-center text-center w-full sm:w-[45%] md:w-[22%]">
-                  <img src={TemperatureIcon} alt="Temperature" className="w-40 h-40 3xl:w-48 3xl:h-48 4xl:w-56 4xl:h-56" />
+                  <img src={TemperatureIcon} alt="Temperature" className="w-40 h-40 3xl:w-48 3xl:h-48 4xl:w-72 4xl:h-72" />
                   <div className="infusionContent mt-[-2.5rem] w-40 3xl:mt-[-3rem] 3xl:w-48 4xl:mt-[-3.5rem] 4xl:w-56">
                     <p className="text-base text-[--primary-color] 3xl:text-lg 4xl:text-3xl">Temperature</p>
                     <p className="text-sm text-gray-600 3xl:text-base 4xl:text-2xl">{productData.infusionGuide.temperature}</p>
@@ -187,7 +187,7 @@ const Product = () => {
               )}
               {productData.infusionGuide.time && (
                 <div className="flex flex-col items-center text-center w-full sm:w-[45%] md:w-[22%]">
-                  <img src={TimeIcon} alt="Time" className="w-40 h-40 3xl:w-48 3xl:h-48 4xl:w-56 4xl:h-56" />
+                  <img src={TimeIcon} alt="Time" className="w-40 h-40 3xl:w-48 3xl:h-48 4xl:w-72 4xl:h-72" />
                   <div className="infusionContent mt-[-2.5rem] w-40 3xl:mt-[-3rem] 3xl:w-48 4xl:mt-[-3.5rem] 4xl:w-56">
                     <p className="text-base text-[--primary-color] 3xl:text-lg 4xl:text-3xl">Time</p>
                     <p className="text-sm text-gray-600 3xl:text-base 4xl:text-2xl">{productData.infusionGuide.time}</p>
@@ -196,7 +196,7 @@ const Product = () => {
               )}
               {productData.infusionGuide.infusions && (
                 <div className="flex flex-col items-center text-center w-full sm:w-[45%] md:w-[22%]">
-                  <img src={InfusionsIcon} alt="Infusions" className="w-40 h-40 3xl:w-48 3xl:h-48 4xl:w-56 4xl:h-56" />
+                  <img src={InfusionsIcon} alt="Infusions" className="w-40 h-40 3xl:w-48 3xl:h-48 4xl:w-72 4xl:h-72" />
                   <div className="infusionContent mt-[-2.5rem] w-48 3xl:mt-[-3rem] 3xl:w-56 4xl:mt-[-3.5rem] 4xl:w-64">
                     <p className="text-base text-[--primary-color] 3xl:text-lg 4xl:text-3xl">Infusions</p>
                     <p className="text-sm text-gray-600 3xl:text-base 4xl:text-2xl">{productData.infusionGuide.infusions}</p>
@@ -227,7 +227,7 @@ const Product = () => {
                 <h2 className="text-md sm:text-xl 3xl:text-3xl 4xl:text-5xl font-bold text-[--primary-color] mb-2">
                   {productData.highlightSection.title}
                 </h2>
-                <p className="text-sm 3xl:text-xl 4xl:text-3xl text-gray-800 font-bold leading-relaxed">
+                <p className="text-sm 3xl:text-xl 4xl:text-3xl text-gray-800 font-bold leading-snug">
                   {productData.highlightSection.text}
                 </p>
               </div>

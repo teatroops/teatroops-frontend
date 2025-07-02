@@ -21,7 +21,7 @@ const Navbar = () => {
 
             <Link to='/'><img src={assets.logo} className='w-44 3xl:w-52 4xl:w-64' alt="" /></Link>
 
-            <ul className='hidden sm:flex gap-5 mt-2 text-sm text-[--primary-color] 3xl:text-base 4xl:text-2xl'>
+            <ul className='hidden sm:flex gap-9 mt-2 text-sm text-[--primary-color] 3xl:text-base 4xl:text-2xl'>
 
                 <NavLink to='/' className='flex flex-col items-center gap-1'>
                     <p>HOME</p>

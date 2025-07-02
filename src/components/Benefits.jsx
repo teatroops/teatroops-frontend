@@ -66,25 +66,25 @@ export const ProductBenefits = () => {
         {
             title: 'Caffeine Free',
             image: (
-                <img src={CaffeineFreeIcon} alt="Caffeine Free Icon" className="w-24 h-24 3xl:w-28 3xl:h-28 4xl:w-32 4xl:h-32" />
+                <img src={CaffeineFreeIcon} alt="Caffeine Free Icon" className="w-24 h-24 lg:w-32 lg:h-32 3xl:w-28 3xl:h-28 4xl:w-40 4xl:h-40" />
             ),
         },
         {
             title: 'Sugar Free',
             image: (
-                <img src={SugarFree} alt="Sugar Free Icon" className="w-24 h-24 3xl:w-28 3xl:h-28 4xl:w-32 4xl:h-32" />
+                <img src={SugarFree} alt="Sugar Free Icon" className="w-24 h-24 lg:w-32 lg:h-32 3xl:w-28 3xl:h-28 4xl:w-40 4xl:h-40" />
             ),
         },
         {
             title: '100% Natural',
             image: (
-                <img src={Natural} alt="100% Natural Icon" className="w-24 h-24 pb-2 3xl:w-28 3xl:h-28 3xl:pb-3 4xl:w-32 4xl:h-32 4xl:pb-4" />
+                <img src={Natural} alt="100% Natural Icon" className="w-24 h-24 lg:w-32 lg:h-32 pb-2 3xl:w-28 3xl:h-28 3xl:pb-3 4xl:w-40 4xl:h-40 4xl:pb-4" />
             ),
         },
         {
             title: 'No Artificial Colour',
             image: (
-                <img src={NoArtificalColour} alt="No Artificial Colour Icon" className="w-24 h-24 3xl:w-28 3xl:h-28 4xl:w-32 4xl:h-32" />
+                <img src={NoArtificalColour} alt="No Artificial Colour Icon" className="w-24 h-24 lg:w-32 lg:h-32 3xl:w-28 3xl:h-28 4xl:w-40 4xl:h-40" />
             ),
         },
     ];
@@ -94,7 +94,7 @@ export const ProductBenefits = () => {
             {benefitsData.map(({ title, image }, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center">
                     <div className="">{image}</div>
-                    <h3 className="text-sm font-semibold text-[--primary-color] mt-[-0.9rem] 3xl:text-base 4xl:text-lg">{title}</h3>
+                    <h3 className="text-sm font-semibold text-[--primary-color] mt-[-1.9rem] 3xl:text-base 4xl:text-2xl">{title}</h3>
                 </div>
             ))}
         </div>
