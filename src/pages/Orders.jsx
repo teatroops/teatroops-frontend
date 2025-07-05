@@ -19,13 +19,15 @@ const Orders = () => {
       if (response.data.success) {
         let allOrdersItem = []
         response.data.orders.map((order) => {
-          order.items.map((item) => {
-            item['status'] = order.status
-            item['payment'] = order.payment
-            item['paymentMethod'] = order.paymentMethod
-            item['date'] = order.createdAt
-            allOrdersItem.push(item)
-          })
+          if (order.payment) {
+            order.items.map((item) => {
+              item['status'] = order.status
+              item['payment'] = order.payment
+              item['paymentMethod'] = order.paymentMethod
+              item['date'] = order.createdAt
+              allOrdersItem.push(item)
+            })
+          }
         })
         setorderData(allOrdersItem.reverse())
       }

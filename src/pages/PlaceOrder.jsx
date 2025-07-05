@@ -235,12 +235,26 @@ const PlaceOrder = () => {
       }
       const finalTotal = subtotal + (subtotal > 0 ? delivery_fee : 0);
       const userId = user?._id;
+      // Prepare guest info if user is not logged in
+      let guestInfo = null;
+      if (!userId) {
+        guestInfo = {
+          name: formData.firstName + ' ' + formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+        };
+      }
       let orderData = {
-        userId,
         address: formData,
         items: orderItems,
         amount: finalTotal, // discounted total
       };
+      if (userId) {
+        orderData.userId = userId;
+      }
+      if (guestInfo) {
+        orderData.guestInfo = guestInfo;
+      }
       switch (method) {
         // API Calls for COD
         // case "cod":
@@ -262,7 +276,7 @@ const PlaceOrder = () => {
           const placeOrderRes = await axios.post(
             backendUrl + "/api/order/razorpay",
             orderData,
-            { headers: { token } }
+            token ? { headers: { token } } : undefined
           );
           if (!placeOrderRes.data.success) {
             toast.error(placeOrderRes.data.message || "Order failed.");

@@ -52,14 +52,19 @@ const Navbar = () => {
                 <div className='group relative'>
                     <img onClick={() => token ? null : navigate('/login')} className='w-5 3xl:w-6 4xl:w-8 cursor-pointer' src={assets.profile_icon} alt="" />
                     {/* Dropdown Menu */}
-                    {token &&
-                        <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-50'>
-                            <div className='flex flex-col gap-2 w-36 3xl:w-44 4xl:w-56 py-3 px-5 bg-slate-100 text-gray-500 rounded shadow-lg'>
-                                <p onClick={() => navigate('/profile')} className='cursor-pointer hover:text-[--primary-color] 3xl:text-lg 4xl:text-2xl'>My Profile</p>
-                                <p onClick={() => navigate('/orders')} className='cursor-pointer hover:text-[--primary-color] 3xl:text-lg 4xl:text-2xl'>Orders</p>
-                                <p onClick={logout} className='cursor-pointer hover:text-[--primary-color] 3xl:text-lg 4xl:text-2xl'>Logout</p>
-                            </div>
-                        </div>}
+                    <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-50'>
+                        <div className='flex flex-col gap-2 w-36 3xl:w-44 4xl:w-56 py-3 px-5 bg-slate-100 text-gray-500 rounded shadow-lg'>
+                            {token ? (
+                                <>
+                                    <p onClick={() => navigate('/profile')} className='cursor-pointer hover:text-[--primary-color] 3xl:text-lg 4xl:text-2xl'>My Profile</p>
+                                    <p onClick={() => navigate('/orders')} className='cursor-pointer hover:text-[--primary-color] 3xl:text-lg 4xl:text-2xl'>Orders</p>
+                                    <p onClick={logout} className='cursor-pointer hover:text-[--primary-color] 3xl:text-lg 4xl:text-2xl'>Logout</p>
+                                </>
+                            ) : (
+                                <p onClick={() => navigate('/login')} className='cursor-pointer hover:text-[--primary-color] 3xl:text-lg 4xl:text-2xl'>Login</p>
+                            )}
+                        </div>
+                    </div>
                 </div>
                 <Link to='/cart' className='relative'>
                     <img src={assets.cart_icon} className='w-5 min-w-5 3xl:w-6 4xl:w-8' alt="" />
