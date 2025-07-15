@@ -187,6 +187,8 @@ const Product = () => {
 
           <ProductBenefits />
 
+          {/* Description  */}
+
           <p className="mt-5 text-gray-600 w-full 3xl:text-xl 4xl:text-2xl">
             {productData.description.split(/(\*[^#]*\*|#[^*]*#)/g).map((text, i) => {
               if (text.startsWith('*') && text.endsWith('*')) {
