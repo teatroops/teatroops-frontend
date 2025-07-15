@@ -9,7 +9,7 @@ const Footer = () => {
 
         {/* Logo/About */}
         <div className="flex flex-col">
-          <img src={assets.logo} className='mb-5 w-32 3xl:w-60 4xl:w-68' alt="" />
+          <img src={assets.logo} className='mb-5 w-32 3xl:w-60 4xl:w-68 -ml-1.5' alt="" />
           <p className='text-gray-600 3xl:text-lg 4xl:text-2xl'>
             At Tea Troops, we're passionate about bringing you the finest organic herbal flower teas. Our carefully curated blends are sourced from sustainable farms and handcrafted to perfection. Experience the beauty of nature in every sip.
           </p>

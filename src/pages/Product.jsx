@@ -17,6 +17,7 @@ const Product = () => {
   const [productData, setProductData] = useState(null);
   const [image, setImage] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const item = products.find((item) => item._id === productId);
@@ -32,15 +33,31 @@ const Product = () => {
     }
   };
 
+  const goNext = () => {
+    const nextIndex = (currentIndex + 1) % productData.image.length;
+    setCurrentIndex(nextIndex);
+    setImage(productData.image[nextIndex]);
+  };
+
+  const goPrev = () => {
+    const prevIndex = (currentIndex - 1 + productData.image.length) % productData.image.length;
+    setCurrentIndex(prevIndex);
+    setImage(productData.image[prevIndex]);
+  };
+
   return productData ? (
     <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100 px-4 sm:px-8 xl:px-10 3xl:px-2 4xl:px-0 max-w-[1440px] 3xl:max-w-[2000px] 4xl:max-w-[2400px] mx-auto">
+
       <div className="flex gap-12 flex-col sm:flex-row lg:gap-20 3xl:gap-10">
         {/* Images */}
         <div className="flex-1 flex flex-col-reverse gap-3 sm:hidden">
           <div className="flex overflow-x-auto justify-start w-full">
             {productData.image.flat().map((item, index) => (
               <img
-                onClick={() => setImage(item)}
+                onClick={() => {
+                  setImage(item);
+                  setCurrentIndex(index);
+                }}
                 src={item}
                 key={index}
                 className="w-[25%] flex-shrink-0 cursor-pointer"
@@ -48,18 +65,59 @@ const Product = () => {
               />
             ))}
           </div>
-          <div className="w-full h-max shadow-lg">
+          <div className="w-full h-max shadow-lg relative">
             <img className="w-full h-auto" src={image} alt="" />
+            <button
+              onClick={goPrev}
+              className="absolute left-0 z-10 bg-white/80 hover:bg-[--primary-color] rounded-full p-2 shadow-md 3xl:p-3 4xl:p-4"
+              aria-label="Previous"
+            >
+              <svg className="w-6 h-6 hover:text-white 3xl:w-8 3xl:h-8 4xl:w-10 4xl:h-10" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={goNext}
+              className="absolute right-0 z-10 bg-white/80 hover:bg-[--primary-color] rounded-full p-2 shadow-md 3xl:p-3 4xl:p-4"
+              aria-label="Next"
+            >
+              <svg className="w-6 h-6 hover:text-white 3xl:w-8 3xl:h-8 4xl:w-10 4xl:h-10" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
         <div className="hidden sm:flex flex-1 flex-col gap-3">
-          <div className="w-full h-max shadow-lg">
+          <div className="w-full h-max shadow-lg relative">
             <img className="w-full h-auto object-contain" src={image} alt="" />
+            <div className="w-full absolute top-1/2 transform -translate-y-1/2">
+              <button
+                onClick={goPrev}
+                className="absolute left-0 z-10 bg-white/80 hover:bg-[--primary-color] rounded-full p-2 shadow-md 3xl:p-3 4xl:p-4"
+                aria-label="Previous"
+              >
+                <svg className="w-6 h-6 hover:text-white 3xl:w-8 3xl:h-8 4xl:w-10 4xl:h-10" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={goNext}
+                className="absolute right-0 z-10 bg-white/80 hover:bg-[--primary-color] rounded-full p-2 shadow-md 3xl:p-3 4xl:p-4"
+                aria-label="Next"
+              >
+                <svg className="w-6 h-6 hover:text-white 3xl:w-8 3xl:h-8 4xl:w-10 4xl:h-10" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
           <div className="flex flex-row overflow-x-auto w-full gap-2 mt-2">
             {productData.image.flat().map((item, index) => (
               <img
-                onClick={() => setImage(item)}
+                onClick={() => {
+                  setImage(item);
+                  setCurrentIndex(index);
+                }}
                 src={item}
                 key={index}
                 className={`w-[7.5rem] h-[7.5rem] 3xl:w-[10rem] 3xl:h-[10rem] 4xl:w-[14rem] 4xl:h-[14rem] object-contain rounded border cursor-pointer transition-all duration-200 ${image === item ? 'border-[--primary-color] border-2' : 'border-gray-200'}`}
@@ -129,7 +187,24 @@ const Product = () => {
 
           <ProductBenefits />
 
-          <p className="mt-5 text-gray-600 w-full 3xl:text-xl 4xl:text-2xl">{productData.description}</p>
+          <p className="mt-5 text-gray-600 w-full 3xl:text-xl 4xl:text-2xl">
+            {productData.description.split(/(\*[^#]*\*|#[^*]*#)/g).map((text, i) => {
+              if (text.startsWith('*') && text.endsWith('*')) {
+                const innerText = text.slice(1, -1);
+                if (innerText.startsWith('#') && innerText.endsWith('#')) {
+                  return <strong key={i}><em>{innerText.slice(1, -1)}</em></strong>;
+                }
+                return <strong key={i}>{innerText}</strong>;
+              } else if (text.startsWith('#') && text.endsWith('#')) {
+                const innerText = text.slice(1, -1);
+                if (innerText.startsWith('*') && innerText.endsWith('*')) {
+                  return <em key={i}><strong>{innerText.slice(1, -1)}</strong></em>;
+                }
+                return <em key={i}>{innerText}</em>;
+              }
+              return <span key={i}>{text}</span>;
+            })}
+          </p>
 
           {productData.benefits?.length > 0 && (
             <div className="sm:w-1/2">
